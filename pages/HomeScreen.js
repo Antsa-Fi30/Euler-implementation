@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 
 const HomeScreen = () => {
   return (
     <View>
-      <button onPress={() => console.log("hello world")}>Click Me</button>
+      <Text>HEllo World</Text>
     </View>
   );
 };

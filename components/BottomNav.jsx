@@ -8,7 +8,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
 
-export default function AppBarFooter() {
+export default function BottomNav() {
   return (
     <Tab.Navigator
       screenOptions={{

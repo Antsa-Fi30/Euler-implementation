@@ -1,30 +1,25 @@
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./pages/HomeScreen";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
 import { PaperProvider } from "react-native-paper";
-import { AppRegistry } from "react-native";
-import { name as appName } from "./app.json";
+import HomeScreen from "./pages/HomeScreen";
+import SuggestionScreen from "./pages/SuggestionScreen";
 
-const Stack = createNativeStackNavigator();
-
-const App = () => {
+export default function App() {
   return (
     <PaperProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ title: "Welcome" }}
-          />
-          <Stack.Screen name="Home" component={<HomeScreen />} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <View style={styles.container}>
+        <HomeScreen />
+        <StatusBar style="auto" />
+      </View>
     </PaperProvider>
   );
-};
+}
 
-export default App;
-
-AppRegistry.registerComponent(appName, () => Main);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "start",
+  },
+});
