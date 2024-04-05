@@ -1,25 +1,22 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { PaperProvider } from "react-native-paper";
-import HomeScreen from "./pages/HomeScreen";
-import SuggestionScreen from "./pages/SuggestionScreen";
+import AppTopBar from "./app/components/AppTopBar";
+import Home from "./app/screens/HomeScreen/Home";
+import SettingsScreen from "./app/screens/SettingsScreen/SettingsScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <PaperProvider>
-      <View style={styles.container}>
-        <HomeScreen />
-        <StatusBar style="auto" />
-      </View>
-    </PaperProvider>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          header: () => <AppTopBar />, // Utilisez votre composant d'App bar personnalisé pour chaque écran
+        }}
+      >
+        <Stack.Screen name="Dish Detective" component={Home} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "start",
-  },
-});
