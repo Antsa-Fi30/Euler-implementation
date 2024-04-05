@@ -5,7 +5,7 @@ import Color from "../../utils/Colors";
 export default function Map() {
   return (
     <View>
-      <Text style={styles.title}>Map ici</Text>
+      <Text style={styles.title}>Map</Text>
     </View>
   );
 }

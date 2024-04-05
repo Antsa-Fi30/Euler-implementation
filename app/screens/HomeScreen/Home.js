@@ -70,7 +70,7 @@ const Home = () => {
                   ? options.tabBarLabel
                   : options.title !== undefined
                   ? options.title
-                  : route.title,
+                  : route.title;
               return label;
             }}
           />
