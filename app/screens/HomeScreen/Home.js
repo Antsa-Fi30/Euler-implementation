@@ -25,6 +25,7 @@ import Color from "../../utils/Colors";
 //Pages in Home 's screen
 import Map from "./Map";
 import Suggestion from "./Suggestion";
+import Search from "./Search";
 
 const Tab = createBottomTabNavigator();
 
@@ -99,6 +100,16 @@ const Home = () => {
                   color={color}
                 />
               );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Search"
+          component={Search}
+          options={{
+            tabBarLabel: "Search",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="map-search" size={size} color={color} />;
             },
           }}
         />

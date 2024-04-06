@@ -19,12 +19,6 @@ export default function AppTopBar() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  //Modal's Portal
-  const [visible, setVisible] = React.useState(false);
-
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-
   useEffect(() => {
     setShowBack(route.name === "Settings");
 
@@ -43,16 +37,6 @@ export default function AppTopBar() {
       {showSettings && (
         <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
       )}
-      <Appbar.Action
-        icon="magnify"
-        onPress={() => {
-          showModal();
-        }}
-      />
-
-      <Modal dismissable visible={visible} onDismiss={hideModal}>
-        <Text>Example Modal. Click outside this area to dismiss.</Text>
-      </Modal>
     </Appbar.Header>
   );
 }

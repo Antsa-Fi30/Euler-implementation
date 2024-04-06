@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const ModalContent = () => {
+const Accessibility = () => {
   return (
     <View>
-      <Text>ModalContent</Text>
+      <Text>Accessibility</Text>
     </View>
   );
 };
 
-export default ModalContent;
+export default Accessibility;
 
 const styles = StyleSheet.create({});

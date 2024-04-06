@@ -1,41 +1,58 @@
 import * as React from "react";
-import { Modal, Portal, Text, Button, PaperProvider } from "react-native-paper";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { Avatar, List } from "react-native-paper";
+import { Card, Text } from "react-native-paper";
 
-const SettingsScreen = ({ navigation }) => {
-  const [visible, setVisible] = React.useState(false);
-
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: "white", padding: 20 };
-
+const SettingsScreen = () => {
   return (
-    <PaperProvider>
-      <Portal>
-        <Modal
-          visible={visible}
-          onDismiss={hideModal}
-          contentContainerStyle={containerStyle}
-        >
-          <Text>Example Modal. Click outside this area to dismiss.</Text>
-        </Modal>
-      </Portal>
-      <Button style={{ marginTop: 30 }} onPress={showModal}>
-        Show
-      </Button>
-    </PaperProvider>
+    <ScrollView style={styles.container}>
+      <Card>
+        <Card.Content>
+          <Text variant="titleLarge">Card title</Text>
+          <Text variant="bodyMedium">Card content</Text>
+        </Card.Content>
+      </Card>
+      <List.Item
+        title="Languages"
+        left={(props) => <List.Icon {...props} icon="format-letter-case" />}
+      />
+      <List.Item
+        title="Notifications"
+        left={(props) => <List.Icon {...props} icon="bell" />}
+      />
+
+      <List.Item
+        title="Préférences de recherche "
+        left={(props) => <List.Icon {...props} icon="map-search" />}
+      />
+      <List.Item
+        title="Accessibilité "
+        left={(props) => <List.Icon {...props} icon="hand-pointing-up" />}
+      />
+      <List.Item
+        title="Paramètres de localisation "
+        left={(props) => <List.Icon {...props} icon="map-marker" />}
+      />
+      <List.Item
+        title="Paramètres de confidentialité  "
+        left={(props) => <List.Icon {...props} icon="shield-lock" />}
+      />
+      <List.Item
+        title="Gestion des données"
+        left={(props) => <List.Icon {...props} icon="database" />}
+      />
+      <List.Item
+        title="À propos de l'application"
+        left={(props) => <List.Icon {...props} icon="information" />}
+      />
+    </ScrollView>
   );
 };
 
 export default SettingsScreen;
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   view: {
-//     margin: 20,
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+  },
+});
