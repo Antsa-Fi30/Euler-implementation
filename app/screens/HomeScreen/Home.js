@@ -26,6 +26,7 @@ import Color from "../../utils/Colors";
 import Map from "./Map";
 import Suggestion from "./Suggestion";
 import Search from "./Search";
+import Acceuil from "./Acceuil";
 
 const Tab = createBottomTabNavigator();
 
@@ -78,6 +79,16 @@ const Home = () => {
         )}
       >
         <Tab.Screen
+          name="Home"
+          component={Acceuil}
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="home" size={size} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
           name="Map"
           component={Map}
           options={{
@@ -87,6 +98,7 @@ const Home = () => {
             },
           }}
         />
+
         <Tab.Screen
           name="Suggestion"
           component={Suggestion}

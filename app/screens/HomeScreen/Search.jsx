@@ -81,7 +81,9 @@ const Search = () => {
                   source={{ uri: "https://picsum.photos/700" }}
                 />
                 <Card.Actions style={{ marginTop: 15 }}>
-                  <Button>Track it!</Button>
+                  <Button icon="map-search-outline" mode="contained-tonal">
+                    Track it!
+                  </Button>
                 </Card.Actions>
               </Card>
             ))}
