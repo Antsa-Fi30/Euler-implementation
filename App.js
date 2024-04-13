@@ -9,21 +9,15 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <PaperProvider
-      settings={{
-        rippleEffectEnabled: true,
-      }}
-    >
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            header: () => <AppTopBar />, // Utilisez votre composant d'App bar personnalisé pour chaque écran
-          }}
-        >
-          <Stack.Screen name="Dish Detective" component={Home} />
-          <Stack.Screen name="Settings" component={SettingsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          header: () => <AppTopBar />, // Utilisez votre composant d'App bar personnalisé pour chaque écran
+        }}
+      >
+        <Stack.Screen name="Dish Detective" component={Home} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
