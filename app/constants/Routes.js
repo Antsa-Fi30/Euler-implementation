@@ -20,12 +20,12 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { BottomNavigation } from "react-native-paper";
 
 //Colors
-import Color from "../../utils/Colors";
+import Color from "../utils/Colors";
 
 //Pages in Home 's screen
-import Map from "./Map";
-import Suggestion from "./Suggestion";
-import Search from "./Search";
+import Map from "../screens/HomeScreen/Map";
+import Suggestion from "../screens/HomeScreen/Suggestion";
+import Search from "../screens/HomeScreen/Search";
 // import Acceuil from "./Acceuil";
 
 const Tab = createBottomTabNavigator();

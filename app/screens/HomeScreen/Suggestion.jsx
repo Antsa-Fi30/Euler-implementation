@@ -14,8 +14,8 @@ export default class Suggestion extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
-    justifyContent: "center",
-    textAlign: "center",
+    marginTop: 10,
+    margin: 5,
+    padding: 8,
   },
 });

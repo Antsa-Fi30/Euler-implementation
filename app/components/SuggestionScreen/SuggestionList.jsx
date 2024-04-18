@@ -1,52 +1,51 @@
+import { StyleSheet, FlatList, View, ScrollView } from "react-native";
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-} from "react-native";
-import SuggestBox from "./SuggestBox";
+import SuggestionItem from "./SuggestionItem";
 
-const DATA = [
+const suggest = [
   {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
+    id: "1",
+    title: "Pho res",
+    location: "Ankorondrano",
+    street: "123 Street Raseta...",
+    star: "⭐⭐⭐⭐⭐",
   },
   {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
+    id: "2",
+    title: "Buccky",
+    location: "Ambohimanandray",
+    street: "123 Street Raseta...",
+    star: "⭐⭐⭐",
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
+    id: "3",
+    title: "asdasd",
+    location: "Antanimena",
+    street: "123 Street Raseta...",
+    star: "⭐⭐",
+  },
+  {
+    id: "4",
+    title: "sasd",
+    location: "Analakely",
+    street: "123 Street Raseta...",
+    star: "⭐⭐⭐⭐⭐",
   },
 ];
 
 const SuggestionList = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View>
       <FlatList
-        data={DATA}
-        renderItem={({ item }) => (
-          <SuggestBox
-            title={item.title}
-            thumbnailUri={"../../../assets/4.jpg"}
-            description={item.id}
-          />
+        data={suggest}
+        renderItem={({ item, index }) => (
+          <SuggestionItem key={index} restaurant={item} />
         )}
-        keyExtractor={(item) => item.id}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-});
-
 export default SuggestionList;
+
+const styles = StyleSheet.create({});

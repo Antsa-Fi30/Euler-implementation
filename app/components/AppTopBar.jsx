@@ -20,10 +20,12 @@ export default function AppTopBar() {
   const route = useRoute();
 
   useEffect(() => {
-    setShowBack(route.name === "Settings");
+    setShowBack(
+      route.name === "Settings" || route.name === "Suggestion details"
+    );
 
     //Limit settings pages
-    if (route.name === "Settings") {
+    if (route.name === "Settings" || route.name === "Suggestion details") {
       setShowSettings(false);
     } else {
       setShowSettings(true);
@@ -31,7 +33,7 @@ export default function AppTopBar() {
   }, [route]);
 
   return (
-    <Appbar.Header dark style={styles.appbar}>
+    <Appbar.Header style={styles.appbar}>
       {showBack && <Appbar.BackAction onPress={() => navigation.goBack()} />}
       <Appbar.Content title={route.name} />
       {showSettings && (
@@ -43,6 +45,9 @@ export default function AppTopBar() {
 
 const styles = StyleSheet.create({
   appbar: {
-    backgroundColor: Color.dark.primary,
+    color: "#000",
+    padding: 10,
+    paddingVertical: 14,
+    backgroundColor: "transparent",
   },
 });
