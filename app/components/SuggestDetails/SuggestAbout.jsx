@@ -1,28 +1,29 @@
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import { Button } from "react-native-paper";
+//React
 import React, { useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import Colors from "../../utils/Colors";
+
+//React-native
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+
+// React native paper
+import { Text, useTheme } from "react-native-paper";
+
+// Components
 import Heading from "../../components/Heading";
 
-const SuggestAbout = () => {
+const SuggestAbout = ({ description }) => {
   const [readMore, setReadMore] = useState(false);
-  const description =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quisquam inventore! Cumque tempore odio non pariatur commodi impedit ut harum nisi, asperiores placeat, illum unde, hic esse? Vel eius perspiciatis autem, voluptatum culpa ullam impedit fuga, dolorum, totam dolorem tempore. Necessitatibus cumque doloremque consequatur mollitia eum, est, facilis nihil, aliquam exercitationem iusto obcaecati consectetur placeat aut sit ratione perferendis. Culpa nemo asperiores consequuntur ipsum maiores! Est architecto ea dolores explicabo modi beatae iste officiis repellat fugit totam quo, accusamus, iure sed similique. Voluptates libero, ipsam sapiente esse nesciunt animi, laborum ad distinctio quam eveniet quae consectetur, ut aliquid minus enim!";
+  const theme = useTheme();
 
   return (
     <View>
       <Heading text={"About"} />
       {/* The long or short text goes here */}
       <Text
-        style={{ lineHeight: 25, fontSize: 16 }}
+        style={{
+          lineHeight: 25,
+          fontSize: 16,
+          fontFamily: "Poppins-medium",
+        }}
         numberOfLines={readMore ? 500 : 5}
       >
         {description}
@@ -34,7 +35,13 @@ const SuggestAbout = () => {
           setReadMore(!readMore);
         }}
       >
-        <Text style={{ color: Colors.light.primary, fontSize: 16 }}>
+        <Text
+          style={{
+            color: theme.colors.tertiary,
+            fontSize: 16,
+            fontFamily: "Poppins",
+          }}
+        >
           {readMore ? "Close" : "Read More"}
         </Text>
       </TouchableOpacity>

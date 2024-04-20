@@ -1,20 +1,36 @@
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import { Button } from "react-native-paper";
-import React, { useState } from "react";
+//React components
+import React, { useEffect, useState } from "react";
+
+//React native's elements
+import { StyleSheet, Image, View, ScrollView } from "react-native";
+
+//React-navigation's element(s)
+import { useRoute } from "@react-navigation/native";
+
+//React-native-paper components
+import { Button, Text, useTheme } from "react-native-paper";
+
+//Local components
 import SuggestInfo from "../../components/SuggestDetails/SuggestInfo";
 import SuggestAbout from "../../components/SuggestDetails/SuggestAbout";
 import SuggestPhoto from "../../components/SuggestDetails/SuggestPhoto";
 
 const SuggestionDetails = () => {
+  const placeholder = [
+    {
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quisquam inventore! Cumque tempore odio non pariatur commodi impedit ut harum nisi, asperiores placeat, illum unde, hic esse? Vel eius perspiciatis autem, voluptatum culpa ullam impedit fuga, dolorum, totam dolorem tempore. Necessitatibus cumque doloremque consequatur mollitia eum, est, facilis nihil, aliquam exercitationem iusto obcaecati consectetur placeat aut sit ratione perferendis. Culpa nemo asperiores consequuntur ipsum maiores! Est architecto ea dolores explicabo modi beatae iste officiis repellat fugit totam quo, accusamus, iure sed similique. Voluptates libero, ipsam sapiente esse nesciunt animi, laborum ad distinctio quam eveniet quae consectetur, ut aliquid minus enim!",
+    },
+  ];
+
+  const param = useRoute().params;
+
+  const theme = useTheme();
+
+  useEffect(() => {}, [param]);
+
   return (
-    <View>
+    <View style={{ backgroundColor: theme.colors.background }}>
       <ScrollView style={{ height: "93%" }}>
         <Image
           source={require("../../../assets/4.jpg")}
@@ -23,7 +39,12 @@ const SuggestionDetails = () => {
 
         {/* INFORMATIONS */}
         <View style={styles.container}>
-          <SuggestInfo />
+          <SuggestInfo
+            name={param?.restaurant.name}
+            region={param?.restaurant.location}
+            location={param?.restaurant.street}
+            star={param?.restaurant.star}
+          />
 
           {/* Line divider */}
           <View
@@ -38,7 +59,7 @@ const SuggestionDetails = () => {
           {/* Description */}
           <View>
             {/* About Section */}
-            <SuggestAbout />
+            <SuggestAbout description={param.restaurant.description} />
             {/* Line divider */}
             <View
               style={{

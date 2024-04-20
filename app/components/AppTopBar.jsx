@@ -8,16 +8,14 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 
 //react-native paper
 import { Appbar } from "react-native-paper";
-import { Modal, Portal, Text, PaperProvider } from "react-native-paper";
-
-//Personnalizable Color
-import Color from "../utils/Colors";
+import { useTheme } from "react-native-paper";
 
 export default function AppTopBar() {
   const [showBack, setShowBack] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
   const navigation = useNavigation();
   const route = useRoute();
+  const theme = useTheme();
 
   useEffect(() => {
     setShowBack(
@@ -33,21 +31,24 @@ export default function AppTopBar() {
   }, [route]);
 
   return (
-    <Appbar.Header style={styles.appbar}>
+    <Appbar.Header
+      style={{
+        backgroundColor: theme.colors.background,
+        padding: 10,
+        paddingVertical: 14,
+      }}
+    >
       {showBack && <Appbar.BackAction onPress={() => navigation.goBack()} />}
       <Appbar.Content title={route.name} />
       {showSettings && (
         <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
       )}
+      <Appbar.Action
+        icon="theme-light-dark"
+        onPress={() => console.log("dark or light")}
+      />
     </Appbar.Header>
   );
 }
 
-const styles = StyleSheet.create({
-  appbar: {
-    color: "#000",
-    padding: 10,
-    paddingVertical: 14,
-    backgroundColor: "transparent",
-  },
-});
+const styles = StyleSheet.create({});

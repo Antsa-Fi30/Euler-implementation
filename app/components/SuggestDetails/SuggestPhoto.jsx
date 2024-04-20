@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text, useTheme } from "react-native-paper";
 import React, { useState } from "react";
 import Heading from "../../components/Heading";
 
@@ -6,7 +7,9 @@ const SuggestPhoto = () => {
   return (
     <View>
       <Heading text={"Photos"} />
-      <View></View>
+      <View>
+        <Text>dskrfjsd</Text>
+      </View>
     </View>
   );
 };

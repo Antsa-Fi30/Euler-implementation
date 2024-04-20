@@ -1,11 +1,14 @@
 import * as React from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
-import { Avatar, List } from "react-native-paper";
+import { Avatar, List, useTheme } from "react-native-paper";
 import { Card, Text } from "react-native-paper";
 
 const SettingsScreen = () => {
+  const theme = useTheme();
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <Card>
         <Card.Content>
           <Text variant="titleLarge">Card title</Text>
@@ -57,6 +60,6 @@ export default SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    // marginTop: 10,
   },
 });

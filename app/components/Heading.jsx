@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text, useTheme } from "react-native-paper";
 import React from "react";
 
 const Heading = ({ text }) => {
@@ -17,8 +18,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontFamily: "Poppins",
-    fontWeight: "900",
+    fontFamily: "Poppins-bold",
     fontSize: 20,
   },
 });

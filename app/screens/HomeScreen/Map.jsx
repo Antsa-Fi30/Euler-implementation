@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Color from "../../utils/Colors";
+import { useTheme } from "react-native-paper";
 
 export default function Map() {
+  const theme = useTheme();
   return (
-    <View>
+    <View style={{ backgroundColor: theme.colors.background }}>
       <Text style={styles.title}>Map</Text>
     </View>
   );
@@ -12,6 +13,6 @@ export default function Map() {
 
 const styles = StyleSheet.create({
   title: {
-    color: Color.light.primary,
+    color: "primary",
   },
 });

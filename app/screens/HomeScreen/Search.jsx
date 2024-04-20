@@ -7,11 +7,13 @@ import {
   Button,
   Text,
   Badge,
+  useTheme,
 } from "react-native-paper";
 import CardResto from "../../components/SearchScreen/Resto";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
+  const theme = useTheme();
 
   return (
     <>
@@ -24,7 +26,12 @@ const Search = () => {
           />
         </Card.Content>
       </Card>
-      <ScrollView>
+      <ScrollView
+        style={[
+          styles.ListContainer,
+          { backgroundColor: theme.colors.background },
+        ]}
+      >
         <CardResto />
       </ScrollView>
     </>
@@ -32,3 +39,9 @@ const Search = () => {
 };
 
 export default Search;
+
+const styles = StyleSheet.create({
+  ListContainer: {
+    color: "#fff",
+  },
+});

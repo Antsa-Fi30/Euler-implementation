@@ -15,12 +15,10 @@ import { CommonActions } from "@react-navigation/native";
 
 //Icons
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { Ionicons } from "@expo/vector-icons";
 
 //UI Library : react-native paper
-import { BottomNavigation } from "react-native-paper";
-
-//Colors
-import Color from "../utils/Colors";
+import { BottomNavigation, useTheme } from "react-native-paper";
 
 //Pages in Home 's screen
 import Map from "../screens/HomeScreen/Map";
@@ -31,6 +29,8 @@ import Search from "../screens/HomeScreen/Search";
 const Tab = createBottomTabNavigator();
 
 const Routes = () => {
+  const theme = useTheme();
+
   return (
     <>
       <Tab.Navigator
@@ -39,6 +39,10 @@ const Routes = () => {
         }}
         tabBar={({ navigation, state, descriptors, insets }) => (
           <BottomNavigation.Bar
+            style={[
+              styles.bottombar,
+              { backgroundColor: theme.colors.background },
+            ]}
             navigationState={state}
             safeAreaInsets={insets}
             onTabPress={({ route, preventDefault }) => {
@@ -78,16 +82,6 @@ const Routes = () => {
           />
         )}
       >
-        {/* <Tab.Screen
-          name="Home"
-          component={Acceuil}
-          options={{
-            tabBarLabel: "Home",
-            tabBarIcon: ({ color, size }) => {
-              return <Icon name="home" size={size} color={color} />;
-            },
-          }}
-        /> */}
         <Tab.Screen
           name="Map"
           component={Map}
@@ -116,12 +110,14 @@ const Routes = () => {
           }}
         />
         <Tab.Screen
-          name="Search"
+          name="Actuality"
           component={Search}
           options={{
-            tabBarLabel: "Search",
+            tabBarLabel: "Actuality",
             tabBarIcon: ({ color, size }) => {
-              return <Icon name="map-search" size={size} color={color} />;
+              return (
+                <Ionicons name="restaurant-sharp" size={size} color={color} />
+              );
             },
           }}
         />
@@ -140,6 +136,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   view: {
-    margin: 20,
+    margin: 10,
+  },
+  bottombar: {
+    // padding: 2,
   },
 });

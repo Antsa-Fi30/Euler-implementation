@@ -1,16 +1,24 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import Colors from "../../utils/Colors";
+import { StyleSheet, View } from "react-native";
+import { Text, useTheme } from "react-native-paper";
 
-const SuggestInfo = () => {
+import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+
+const SuggestInfo = ({ name, region, location, star }) => {
+  const theme = useTheme();
   return (
     <View>
-      <View>
+      <View
+        style={{
+          marginBottom: 20,
+          display: "flex",
+          gap: 3,
+        }}
+      >
         <Text
           style={{
-            fontFamily: "Poppins",
-            color: Colors.dark.primary,
+            color: theme.colors.tertiary,
+            fontFamily: "Poppins-bold",
             fontSize: 23,
             fontWeight: "bold",
             display: "flex",
@@ -18,35 +26,29 @@ const SuggestInfo = () => {
           }}
         >
           <Ionicons
+            color={theme.colors.primary}
             name="restaurant-sharp"
             size={25}
             style={{ marginRight: 5 }}
-            color={Colors.dark.primary}
           />
-          PhoResto
+          {name}
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Poppins-bold",
+            fontSize: 23,
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {star}
         </Text>
       </View>
       <View style={styles.subContainer}>
         <Text
           style={{
             fontFamily: "Poppins",
-            color: Colors.light.primary,
-            fontSize: 16,
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Ionicons
-            name="locate-outline"
-            size={25}
-            color={Colors.dark.primary}
-          />
-          <Text>Ankorondrano</Text>
-        </Text>
-        <Text
-          style={{
-            fontFamily: "Poppins",
-            color: "#d3d3d",
             fontSize: 14,
             fontWeight: "400",
             display: "flex",
@@ -54,12 +56,29 @@ const SuggestInfo = () => {
           }}
         >
           <Ionicons
+            color={theme.colors.primary}
+            name="locate-sharp"
+            size={25}
+            style={{ marginRight: 5 }}
+          />
+          {region}
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Poppins",
+            fontSize: 14,
+            fontWeight: "400",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Ionicons
+            color={theme.colors.primary}
             name="location-sharp"
             size={25}
             style={{ marginRight: 5 }}
-            color={Colors.dark.primary}
           />
-          Rue 123 Dr Raseta Antananarivo
+          {location}
         </Text>
       </View>
     </View>
