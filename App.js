@@ -3,7 +3,7 @@ import { useState } from "react";
 
 //Components
 import AppTopBar from "./app/components/AppTopBar";
-import Routes from "./app/constants/Routes";
+import Routes from "./app/routes/Routes";
 import SettingsScreen from "./app/screens/SettingsScreen/SettingsScreen";
 import SuggestionDetails from "./app/screens/SuggestionDetailsScreen/SuggestionDetails";
 
@@ -17,9 +17,12 @@ import { darkTheme, lightTheme } from "./app/utils/Theme";
 
 //Expo
 import { useFonts } from "expo-font";
+import SettingsDetailsScreen from "./app/screens/SettingsDetailsScreen/SettingsDetailsScreen";
 
+//Function:
 const Stack = createNativeStackNavigator();
 
+//Components exported
 export default function App() {
   // Loading customized fonts
   const [fontsLoaded, fontError] = useFonts({
@@ -28,12 +31,18 @@ export default function App() {
     "Poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
   });
 
+  //Etat du theme
+  const [theme, setTheme] = useState(lightTheme);
+  const toggleTheme = () => {
+    setTheme(theme === darkTheme ? lightTheme : darkTheme);
+  };
+
   return (
-    <PaperProvider theme={lightTheme}>
+    <PaperProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            header: () => <AppTopBar />, // Utilisez votre composant d'App bar personnalisé pour chaque écran
+            header: () => <AppTopBar toggleTheme={toggleTheme} />,
           }}
         >
           <Stack.Screen name="Dish Detective" component={Routes} />
@@ -42,6 +51,10 @@ export default function App() {
             component={SuggestionDetails}
           />
           <Stack.Screen name="Settings" component={SettingsScreen} />
+          <Stack.Screen
+            name="Settings details"
+            component={SettingsDetailsScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

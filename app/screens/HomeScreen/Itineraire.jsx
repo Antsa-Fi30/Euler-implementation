@@ -1,20 +1,21 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Text, useTheme } from "react-native-paper";
-import Parameters from "../../components/SettingsScreen/Parameters";
 
-const SettingsScreen = () => {
+const Itineraire = () => {
   const theme = useTheme();
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Parameters />
+      <Text style={[styles.container, { fontFamily: "Poppins" }]}>
+        asdasdas
+      </Text>
     </View>
   );
 };
 
-export default SettingsScreen;
+export default Itineraire;
 
 const styles = StyleSheet.create({
   container: {

@@ -24,6 +24,7 @@ import { BottomNavigation, useTheme } from "react-native-paper";
 import Map from "../screens/HomeScreen/Map";
 import Suggestion from "../screens/HomeScreen/Suggestion";
 import Search from "../screens/HomeScreen/Search";
+import Itineraire from "../screens/HomeScreen/Itineraire";
 // import Acceuil from "./Acceuil";
 
 const Tab = createBottomTabNavigator();
@@ -118,6 +119,17 @@ const Routes = () => {
               return (
                 <Ionicons name="restaurant-sharp" size={size} color={color} />
               );
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="Itineraires"
+          component={Itineraire}
+          options={{
+            tabBarLabel: "Itineraires",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="map" size={size} color={color} />;
             },
           }}
         />

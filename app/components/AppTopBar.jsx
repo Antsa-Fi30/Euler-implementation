@@ -10,7 +10,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Appbar } from "react-native-paper";
 import { useTheme } from "react-native-paper";
 
-export default function AppTopBar() {
+export default function AppTopBar({ toggleTheme }) {
   const [showBack, setShowBack] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
   const navigation = useNavigation();
@@ -18,15 +18,13 @@ export default function AppTopBar() {
   const theme = useTheme();
 
   useEffect(() => {
-    setShowBack(
-      route.name === "Settings" || route.name === "Suggestion details"
-    );
+    setShowBack(route.name != "Dish Detective");
 
     //Limit settings pages
-    if (route.name === "Settings" || route.name === "Suggestion details") {
-      setShowSettings(false);
-    } else {
+    if (route.name === "Dish Detective") {
       setShowSettings(true);
+    } else {
+      setShowSettings(false);
     }
   }, [route]);
 
@@ -43,10 +41,7 @@ export default function AppTopBar() {
       {showSettings && (
         <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
       )}
-      <Appbar.Action
-        icon="theme-light-dark"
-        onPress={() => console.log("dark or light")}
-      />
+      <Appbar.Action icon="theme-light-dark" onPress={toggleTheme} />
     </Appbar.Header>
   );
 }

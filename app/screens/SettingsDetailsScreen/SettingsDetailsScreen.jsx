@@ -1,20 +1,22 @@
 import { StyleSheet, View } from "react-native";
-import React from "react";
 import { Text, useTheme } from "react-native-paper";
-import Parameters from "../../components/SettingsScreen/Parameters";
+import React from "react";
+//React-navigation's element(s)
+import { useRoute } from "@react-navigation/native";
 
-const SettingsScreen = () => {
+const SettingsDetailsScreen = () => {
   const theme = useTheme();
+  const param = useRoute().params;
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Parameters />
+      <Text>{param.setting?.label}</Text>
     </View>
   );
 };
 
-export default SettingsScreen;
+export default SettingsDetailsScreen;
 
 const styles = StyleSheet.create({
   container: {

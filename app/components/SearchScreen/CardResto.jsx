@@ -47,7 +47,7 @@ const CardResto = ({ id }) => {
 
       <Card.Cover
         style={{ marginVertical: 15 }}
-        source={{ uri: "../../../assets/4.jpg" }}
+        source={require("../../../assets/4.jpg")}
       />
       <View style={{ marginTop: 15 }}>
         <Button

@@ -17,15 +17,6 @@ const Search = () => {
 
   return (
     <>
-      <Card style={{ padding: 7, borderRadius: 0 }}>
-        <Card.Content>
-          <Searchbar
-            placeholder="Search"
-            onChangeText={setSearchQuery}
-            value={searchQuery}
-          />
-        </Card.Content>
-      </Card>
       <ScrollView
         style={[
           styles.ListContainer,
