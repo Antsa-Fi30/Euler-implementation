@@ -17,15 +17,17 @@ const Setting = ({ parameters }) => {
         }}
         rippleColor="rgba(0, 0, 0, .32)"
       >
-        <Text
+        <View
           style={{
-            fontSize: 14,
-            fontFamily: "Poppins",
-            marginLeft: 5,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 5,
           }}
         >
-          {parameters.label}
-        </Text>
+          <Text>{parameters.icon}</Text>
+          <Text style={[styles.label]}>{parameters.label}</Text>
+        </View>
       </TouchableRipple>
       <Divider />
     </View>
@@ -37,5 +39,10 @@ export default Setting;
 const styles = StyleSheet.create({
   container: {
     padding: 15,
+  },
+  label: {
+    fontSize: 14,
+    fontFamily: "Poppins",
+    marginLeft: 5,
   },
 });

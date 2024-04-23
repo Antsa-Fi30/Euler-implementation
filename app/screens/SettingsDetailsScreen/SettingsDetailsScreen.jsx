@@ -11,7 +11,8 @@ const SettingsDetailsScreen = () => {
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Text>{param.setting?.label}</Text>
+      <Text>{param.setting?.options}</Text>
+      <Text>{param.setting?.type}</Text>
     </View>
   );
 };
@@ -22,5 +23,8 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     maxHeight: "100%",
+    marginTop: 10,
+    margin: 5,
+    padding: 8,
   },
 });
