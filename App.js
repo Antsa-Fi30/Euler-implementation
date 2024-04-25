@@ -1,5 +1,5 @@
 //React
-import { useCallback, useState, useMemo } from "react";
+import { useCallback, useState, useMemo, useEffect } from "react";
 
 //Components
 import AppTopBar from "./app/components/AppTopBar";
@@ -38,7 +38,14 @@ export default function App() {
   let theme = isThemeDark ? darkTheme : lightTheme;
 
   const toggleTheme = useCallback(() => {
-    return setIsThemeDark(!isThemeDark);
+    const newTheme = !isThemeDark;
+    AsyncStorage.setItem("isThemeDark", JSON.stringify(newTheme))
+      .then(() => {
+        setIsThemeDark(newTheme);
+      })
+      .catch((err) => {
+        console.log("Error in : " + err);
+      });
   }, [isThemeDark]);
 
   const preferences = useMemo(
@@ -54,6 +61,18 @@ export default function App() {
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
     "Poppins-medium": require("./assets/fonts/Poppins-Medium.ttf"),
     "Poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
+  });
+
+  useEffect(() => {
+    AsyncStorage.getItem("isThemeDark")
+      .then((theme) => {
+        if (theme !== null) {
+          setIsThemeDark(JSON.parse(theme));
+        }
+      })
+      .catch((err) => {
+        console.log("Not got because : " + err);
+      });
   });
 
   return (
