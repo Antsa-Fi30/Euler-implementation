@@ -41,7 +41,6 @@ export default function AppTopBar({ toggleTheme }) {
       {showSettings && (
         <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
       )}
-      <Appbar.Action icon="theme-light-dark" onPress={toggleTheme} />
     </Appbar.Header>
   );
 }

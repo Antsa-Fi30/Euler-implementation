@@ -2,18 +2,17 @@ import { StyleSheet, FlatList, View, ScrollView } from "react-native";
 import React from "react";
 import { useTheme } from "react-native-paper";
 import Setting from "./Setting";
-import { SettingsMenu } from "../../constants/SettingsMenu";
 
-const Parameters = () => {
+const Parameters = ({ options }) => {
   const theme = useTheme();
-  console.log(SettingsMenu);
+  console.log(options);
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={SettingsMenu}
+        data={options}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Setting parameters={item} />}
       />

@@ -2,6 +2,7 @@ import { DarkTheme, DefaultTheme } from "react-native-paper";
 
 export const darkTheme = {
   ...DarkTheme,
+  dark: true,
   colors: {
     primary: "rgb(79, 216, 235)",
     onPrimary: "rgb(0, 54, 61)",
@@ -48,6 +49,7 @@ export const darkTheme = {
 
 export const lightTheme = {
   ...DefaultTheme,
+  dark: false,
   colors: {
     primary: "rgb(0, 104, 116)",
     onPrimary: "rgb(255, 255, 255)",

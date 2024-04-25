@@ -1,18 +1,24 @@
+import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text, useTheme } from "react-native-paper";
+import { Text, RadioButton, useTheme } from "react-native-paper";
 import React from "react";
 //React-navigation's element(s)
 import { useRoute } from "@react-navigation/native";
+import LangageList from "../../components/SettingsDetailsScreen/LangageList";
+import PreferenceList from "../../components/SettingsDetailsScreen/PreferenceList";
 
 const SettingsDetailsScreen = () => {
   const theme = useTheme();
   const param = useRoute().params;
+  const option = param.setting?.options;
+  const type = param.setting?.type;
+
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Text>{param.setting?.options}</Text>
-      <Text>{param.setting?.type}</Text>
+      {type === "radio" && <LangageList OptionList={option} />}
+      {type === "switch" && <PreferenceList />}
     </View>
   );
 };
@@ -23,8 +29,5 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     maxHeight: "100%",
-    marginTop: 10,
-    margin: 5,
-    padding: 8,
   },
 });
