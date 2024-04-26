@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const saveData = async (selectedLanguage) => {
   try {
     await AsyncStorage.setItem("LANGUAGE", selectedLanguage);
-    console.log("saved");
+    console.log("Lang saved");
   } catch (err) {
     console.log("err in saving data because: " + err);
   }

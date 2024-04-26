@@ -22,8 +22,6 @@ import { BottomNavigation, useTheme } from "react-native-paper";
 //Pages in Home 's screen
 import Map from "../screens/HomeScreen/Map";
 import Suggestion from "../screens/HomeScreen/Suggestion";
-import Search from "../screens/HomeScreen/Search";
-import Itineraire from "../screens/HomeScreen/Itineraire";
 
 //Traductor
 import { useTranslation } from "react-i18next";
@@ -109,29 +107,6 @@ const Routes = () => {
                   color={color}
                 />
               );
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Actuality"
-          component={Search}
-          options={{
-            tabBarLabel: `${t("menu3")}`,
-            tabBarIcon: ({ color, size }) => {
-              return (
-                <Ionicons name="restaurant-sharp" size={size} color={color} />
-              );
-            },
-          }}
-        />
-
-        <Tab.Screen
-          name="Itineraires"
-          component={Itineraire}
-          options={{
-            tabBarLabel: `${t("menu4")}`,
-            tabBarIcon: ({ color, size }) => {
-              return <Icon name="map" size={size} color={color} />;
             },
           }}
         />

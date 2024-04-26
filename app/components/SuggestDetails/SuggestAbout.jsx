@@ -10,13 +10,17 @@ import { Text, useTheme } from "react-native-paper";
 // Components
 import Heading from "../../components/Heading";
 
+//Traduction
+import { useTranslation } from "react-i18next";
+
 const SuggestAbout = ({ description }) => {
   const [readMore, setReadMore] = useState(false);
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <View>
-      <Heading text={"About"} />
+      <Heading text={"Apropos"} />
       {/* The long or short text goes here */}
       <Text
         style={{
@@ -42,7 +46,7 @@ const SuggestAbout = ({ description }) => {
             fontFamily: "Poppins",
           }}
         >
-          {readMore ? "Close" : "Read More"}
+          {readMore ? t("close") : t("read")}
         </Text>
       </TouchableOpacity>
     </View>

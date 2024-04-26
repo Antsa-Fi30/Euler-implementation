@@ -6,7 +6,7 @@ import Heading from "../../components/Heading";
 const SuggestPhoto = () => {
   return (
     <View>
-      <Heading text={"Photos"} />
+      <Heading text={"photos"} />
       <View>
         <Text>dskrfjsd</Text>
       </View>

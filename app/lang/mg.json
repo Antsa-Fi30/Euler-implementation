@@ -1,19 +1,19 @@
 {
   "translation": {
-    "placeholder": "Rechercher...",
+    "placeholder": "Hikaroka...",
     "menu1": "Carte",
-    "menu2": "Suggestions",
+    "menu2": "HEVITRA",
     "menu3": "Actualités",
     "menu4": "Itinéraires",
     "setting": {
-      "lang": "Langages",
-      "pref": "Préférences",
+      "lang": "Fiteny",
+      "pref": "Safidy manokana",
       "prefs": {
         "theme": "Mode sombre"
       }
     },
     "Apropos": "A propos",
-    "photos": "Photos",
+    "photos": "Sary",
     "read": "En savoir plus",
     "close": "Fermer"
   }

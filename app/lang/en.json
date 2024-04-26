@@ -11,6 +11,10 @@
       "prefs": {
         "theme": "Dark mode"
       }
-    }
+    },
+    "Apropos": "About",
+    "photos": "Pictures",
+    "read": "Read more",
+    "close": "Close"
   }
 }
