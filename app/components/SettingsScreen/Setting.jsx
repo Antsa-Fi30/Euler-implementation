@@ -2,10 +2,13 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Text, Divider, TouchableRipple, useTheme } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const Setting = ({ parameters }) => {
   const theme = useTheme();
   const navigation = useNavigation();
+
+  const { t } = useTranslation();
   return (
     <View style={{ backgroundColor: theme.colors.background, width: "100%" }}>
       <TouchableRipple
@@ -26,7 +29,7 @@ const Setting = ({ parameters }) => {
           }}
         >
           <Text>{parameters.icon}</Text>
-          <Text style={[styles.label]}>{parameters.label}</Text>
+          <Text style={[styles.label]}>{t(parameters.label)}</Text>
         </View>
       </TouchableRipple>
       <Divider />

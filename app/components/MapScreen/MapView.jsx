@@ -5,7 +5,7 @@ import { Text } from "react-native-paper";
 const MapView = () => {
   return (
     <View style={styles.container}>
-      <Text>MapView</Text>
+      <Text>Map View</Text>
     </View>
   );
 };

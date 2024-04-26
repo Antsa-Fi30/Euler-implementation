@@ -1,15 +1,26 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import { useTheme } from "react-native-paper";
+import { ThemeContext } from "../../context/ThemeContext";
+import Switcher from "./Switcher";
+import { useTranslation } from "react-i18next";
 
-import ThemeSwitcher from "./ThemeSwitcher";
-
-const PreferenceList = ({}) => {
-  const theme = useTheme();
+const PreferenceList = ({ OptionList }) => {
+  const option = OptionList;
+  const { toggleTheme, isThemeDark } = React.useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <ThemeSwitcher />
+      {option.map((item, index) => {
+        return (
+          <Switcher
+            key={index}
+            label={t(item.label)}
+            value={isThemeDark}
+            update={toggleTheme}
+          />
+        );
+      })}
     </View>
   );
 };

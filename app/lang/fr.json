@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "placeholder": "Rechercher...",
+    "menu1": "Carte",
+    "menu2": "Suggestions",
+    "menu3": "Actualités",
+    "menu4": "Itinéraires",
+    "setting": {
+      "lang": "Langages",
+      "pref": "Préférences",
+      "prefs": {
+        "theme": "Mode sombre"
+      }
+    }
+  }
+}

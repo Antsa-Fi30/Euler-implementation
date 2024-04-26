@@ -5,7 +5,6 @@ import Setting from "./Setting";
 
 const Parameters = ({ options }) => {
   const theme = useTheme();
-  console.log(options);
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}

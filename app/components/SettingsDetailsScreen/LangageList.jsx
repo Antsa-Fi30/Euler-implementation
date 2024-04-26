@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { RadioButton } from "react-native-paper";
+import i18next from "i18next";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const saveData = async (selectedLanguage) => {
+  try {
+    await AsyncStorage.setItem("LANGUAGE", selectedLanguage);
+    console.log("saved");
+  } catch (err) {
+    console.log("err in saving data because: " + err);
+  }
+};
 
 const LangageList = ({ OptionList }) => {
-  const [value, setValue] = useState("fr");
-
   const option = OptionList;
+  const [SelectedLang, setSelectedLang] = useState(i18next.language);
+
+  useEffect(() => {
+    i18next.changeLanguage(SelectedLang);
+    saveData(SelectedLang);
+  }, [SelectedLang]);
+
   return (
     <View style={styles.container}>
       <RadioButton.Group
-        onValueChange={(newValue) => setValue(newValue)}
-        value={value}
+        onValueChange={(newValue) => setSelectedLang(newValue)}
+        value={SelectedLang}
       >
         {option.map((item, index) => {
           return (
@@ -18,6 +34,7 @@ const LangageList = ({ OptionList }) => {
               key={index}
               label={item.label}
               value={item.value}
+              status={SelectedLang === item.value ? "checked" : "unchecked"}
             />
           );
         })}

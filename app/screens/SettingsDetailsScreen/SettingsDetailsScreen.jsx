@@ -9,6 +9,7 @@ import PreferenceList from "../../components/SettingsDetailsScreen/PreferenceLis
 
 const SettingsDetailsScreen = () => {
   const theme = useTheme();
+
   const param = useRoute().params;
   const option = param.setting?.options;
   const type = param.setting?.type;
@@ -18,7 +19,7 @@ const SettingsDetailsScreen = () => {
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
       {type === "radio" && <LangageList OptionList={option} />}
-      {type === "switch" && <PreferenceList />}
+      {type === "switch" && <PreferenceList OptionList={option} />}
     </View>
   );
 };

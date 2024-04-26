@@ -1,20 +1,18 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Text, Switch, Divider, useTheme } from "react-native-paper";
-import { ThemeContext } from "../../context/ThemeContext";
 
-const ThemeSwitcher = () => {
+const Switcher = ({ label, value, update }) => {
   const theme = useTheme();
-  const { toggleTheme, isThemeDark } = React.useContext(ThemeContext);
 
   return (
     <View>
       <View style={styles.list}>
-        <Text>Theme Sombre</Text>
+        <Text>{label}</Text>
         <Switch
           color={theme?.colors.primary}
-          value={isThemeDark}
-          onValueChange={toggleTheme}
+          value={value}
+          onValueChange={update}
         />
       </View>
       <Divider />
@@ -22,7 +20,7 @@ const ThemeSwitcher = () => {
   );
 };
 
-export default ThemeSwitcher;
+export default Switcher;
 
 const styles = StyleSheet.create({
   list: {

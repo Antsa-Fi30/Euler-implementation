@@ -1,17 +1,19 @@
 import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import { Searchbar, useTheme } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
       <Searchbar
-        placeholder="Search"
+        placeholder={t("placeholder")}
         onChangeText={setSearchQuery}
         value={searchQuery}
       />

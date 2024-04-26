@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   subContainer: {
     display: "flex",
     gap: 1,
-    overflowX: "scroll",
+    overflowX: "auto",
   },
   image: {
     width: 100,

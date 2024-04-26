@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "placeholder": "To research...",
+    "menu1": "Map",
+    "menu2": "Suggestions",
+    "menu3": "News",
+    "menu4": "Itineraries",
+    "setting": {
+      "lang": "Languages",
+      "pref": "Preferences",
+      "prefs": {
+        "theme": "Dark mode"
+      }
+    }
+  }
+}

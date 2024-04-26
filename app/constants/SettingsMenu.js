@@ -1,7 +1,7 @@
 export const SettingsMenu = [
   {
     id: "1",
-    label: "languages",
+    label: "setting.lang",
     type: "radio",
     options: [
       {
@@ -16,11 +16,11 @@ export const SettingsMenu = [
   },
   {
     id: "2",
-    label: "Preferences",
+    label: "setting.pref",
     type: "switch",
     options: [
       {
-        label: "Mode sombre",
+        label: "setting.prefs.theme",
         value: false, // Valeur par défaut du mode sombre
         type: "switch",
       },

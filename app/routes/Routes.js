@@ -1,5 +1,4 @@
 import React, { Component, useEffect } from "react";
-
 //React Native components
 import {
   StyleSheet,
@@ -25,12 +24,15 @@ import Map from "../screens/HomeScreen/Map";
 import Suggestion from "../screens/HomeScreen/Suggestion";
 import Search from "../screens/HomeScreen/Search";
 import Itineraire from "../screens/HomeScreen/Itineraire";
-// import Acceuil from "./Acceuil";
+
+//Traductor
+import { useTranslation } from "react-i18next";
 
 const Tab = createBottomTabNavigator();
 
 const Routes = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -87,7 +89,7 @@ const Routes = () => {
           name="Map"
           component={Map}
           options={{
-            tabBarLabel: "Map",
+            tabBarLabel: `${t("menu1")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="map" size={size} color={color} />;
             },
@@ -98,7 +100,7 @@ const Routes = () => {
           name="Suggestion"
           component={Suggestion}
           options={{
-            tabBarLabel: "Suggestion",
+            tabBarLabel: `${t("menu2")}`,
             tabBarIcon: ({ color, size }) => {
               return (
                 <Icon
@@ -114,7 +116,7 @@ const Routes = () => {
           name="Actuality"
           component={Search}
           options={{
-            tabBarLabel: "Actuality",
+            tabBarLabel: `${t("menu3")}`,
             tabBarIcon: ({ color, size }) => {
               return (
                 <Ionicons name="restaurant-sharp" size={size} color={color} />
@@ -127,7 +129,7 @@ const Routes = () => {
           name="Itineraires"
           component={Itineraire}
           options={{
-            tabBarLabel: "Itineraires",
+            tabBarLabel: `${t("menu4")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="map" size={size} color={color} />;
             },

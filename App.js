@@ -13,7 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //React native paper and it's Theming
-import { Provider as PaperProvider, ThemeProvider } from "react-native-paper";
+import { Provider as PaperProvider } from "react-native-paper";
 
 //Expo
 import { useFonts } from "expo-font";
@@ -24,19 +24,40 @@ import { lightTheme, darkTheme } from "./app/utils/Theme";
 //Theme context
 import { ThemeContext } from "./app/context/ThemeContext";
 
+//language
+import "./app/lang/i18n";
+import i18next from "i18next";
+
 //Save configuration
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 //Function:
 const Stack = createNativeStackNavigator();
+const loadLang = async () => {
+  try {
+    const storedLanguage = await AsyncStorage.getItem("LANGUAGE");
+    console.log(storedLanguage);
+    if (storedLanguage) {
+      i18next.changeLanguage(storedLanguage);
+      console.log("loaded");
+    }
+  } catch (err) {
+    console.log("Error at fetching item because : " + err);
+  }
+};
 
 //Components exported
 export default function App() {
+  // Loading customized fonts
+  const [fontsLoaded, fontError] = useFonts({
+    Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-medium": require("./assets/fonts/Poppins-Medium.ttf"),
+    "Poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
+  });
+
   //Using context theme
   const [isThemeDark, setIsThemeDark] = useState(false);
-
   let theme = isThemeDark ? darkTheme : lightTheme;
-
   const toggleTheme = useCallback(() => {
     const newTheme = !isThemeDark;
     AsyncStorage.setItem("isThemeDark", JSON.stringify(newTheme))
@@ -47,7 +68,7 @@ export default function App() {
         console.log("Error in : " + err);
       });
   }, [isThemeDark]);
-
+  //Storing items
   const preferences = useMemo(
     () => ({
       toggleTheme,
@@ -56,13 +77,7 @@ export default function App() {
     [toggleTheme, isThemeDark]
   );
 
-  // Loading customized fonts
-  const [fontsLoaded, fontError] = useFonts({
-    Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
-    "Poppins-medium": require("./assets/fonts/Poppins-Medium.ttf"),
-    "Poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
-  });
-
+  //Last theme applied appear first when app is started
   useEffect(() => {
     AsyncStorage.getItem("isThemeDark")
       .then((theme) => {
@@ -71,9 +86,10 @@ export default function App() {
         }
       })
       .catch((err) => {
-        console.log("Not got because : " + err);
+        console.log("Not gotten because : " + err);
       });
-  });
+    loadLang();
+  }, [loadLang]);
 
   return (
     <ThemeContext.Provider value={preferences}>
