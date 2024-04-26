@@ -15,6 +15,8 @@
     "Apropos": "About",
     "photos": "Pictures",
     "read": "Read more",
-    "close": "Close"
+    "close": "Close",
+    "btn_save": "Save it for later",
+    "btn_find": "Find it"
   }
 }
