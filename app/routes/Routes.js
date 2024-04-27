@@ -1,12 +1,8 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 //React Native components
 import {
   StyleSheet,
-  View,
-  ActivityIndicator,
-  SafeAreaView,
 } from "react-native";
-import { StatusBar } from "expo-status-bar";
 
 //React Navigation
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -14,7 +10,6 @@ import { CommonActions } from "@react-navigation/native";
 
 //Icons
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Ionicons } from "@expo/vector-icons";
 
 //UI Library : react-native paper
 import { BottomNavigation, useTheme } from "react-native-paper";
