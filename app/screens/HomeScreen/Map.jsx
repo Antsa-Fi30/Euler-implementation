@@ -1,28 +1,14 @@
-import { StyleSheet, View } from "react-native";
-import { useState } from "react";
-import { useTheme } from "react-native-paper";
-import SearchBar from "../../components/MapScreen/SearchBar";
-import MapView from "../../components/MapScreen/MapView";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
-export default function Map() {
-  const theme = useTheme();
-
+const Map = () => {
   return (
-    <View
-      style={[
-        styles.container,
-        { padding: 10, backgroundColor: theme.colors.background },
-      ]}
-    >
-      <SearchBar />
-      <MapView />
+    <View>
+      <Text>Map</Text>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    maxHeight: "100%",
-  },
-});
+export default Map;
+
+const styles = StyleSheet.create({});
