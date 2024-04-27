@@ -7,8 +7,8 @@ import { useTranslation } from "react-i18next";
 const Setting = ({ parameters }) => {
   const theme = useTheme();
   const navigation = useNavigation();
-
   const { t } = useTranslation();
+
   return (
     <View style={{ backgroundColor: theme.colors.background, width: "100%" }}>
       <TouchableRipple

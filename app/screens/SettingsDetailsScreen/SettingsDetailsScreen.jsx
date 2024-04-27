@@ -18,8 +18,8 @@ const SettingsDetailsScreen = () => {
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      {type === "radio" && <LangageList OptionList={option} />}
-      {type === "switch" && <PreferenceList OptionList={option} />}
+      {type === "lang" && <LangageList OptionList={option} />}
+      {type === "pref" && <PreferenceList OptionList={option} />}
     </View>
   );
 };

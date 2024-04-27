@@ -2,7 +2,7 @@ export const SettingsMenu = [
   {
     id: "1",
     label: "setting.lang",
-    type: "radio",
+    type: "lang",
     options: [
       {
         label: "Francais",
@@ -21,7 +21,7 @@ export const SettingsMenu = [
   {
     id: "2",
     label: "setting.pref",
-    type: "switch",
+    type: "pref",
     options: [
       {
         label: "setting.prefs.theme",

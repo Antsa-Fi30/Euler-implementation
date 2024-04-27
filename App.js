@@ -28,11 +28,13 @@ import { ThemeContext } from "./app/context/ThemeContext";
 import "./app/lang/i18n";
 import i18next from "i18next";
 
-//Save configuration
+//Save configuration(s)
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-//Function:
+//Function creating Navigation:
 const Stack = createNativeStackNavigator();
+
+//Function loading languages
 const loadLang = async () => {
   try {
     const storedLanguage = await AsyncStorage.getItem("LANGUAGE");
@@ -57,7 +59,7 @@ export default function App() {
 
   //Using context theme
   const [isThemeDark, setIsThemeDark] = useState(false);
-  let theme = isThemeDark ? darkTheme : lightTheme;
+  let theme = isThemeDark ? darkTheme : lightTheme; //Mamadibadika an le theme
   const toggleTheme = useCallback(() => {
     const newTheme = !isThemeDark;
     AsyncStorage.setItem("isThemeDark", JSON.stringify(newTheme))
@@ -82,13 +84,13 @@ export default function App() {
     AsyncStorage.getItem("isThemeDark")
       .then((theme) => {
         if (theme !== null) {
-          setIsThemeDark(JSON.parse(theme));
+          setIsThemeDark(JSON.parse(theme)); //Selon ce qui etait configurer depuis la dernier valeur du mode Sombre (true or false)
         }
       })
       .catch((err) => {
         console.log("Not gotten because : " + err);
       });
-    loadLang();
+    loadLang(); //Loading language in launch
   }, [loadLang]);
 
   return (
