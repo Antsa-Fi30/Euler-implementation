@@ -27,6 +27,7 @@ import { ThemeContext } from "./app/context/ThemeContext";
 //language
 import "./app/lang/i18n";
 import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
 //Save configuration(s)
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -50,6 +51,7 @@ const loadLang = async () => {
 
 //Components exported
 export default function App() {
+  const { t } = useTranslation();
   // Loading customized fonts
   const [fontsLoaded, fontError] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -104,10 +106,13 @@ export default function App() {
           >
             <Stack.Screen name="Dish Detective" component={Routes} />
             <Stack.Screen
-              name={"Suggestion details"}
+              name={t("appbar.details")}
               component={SuggestionDetails}
             />
-            <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen
+              name={t("appbar.setting")}
+              component={SettingsScreen}
+            />
             <Stack.Screen
               name="Settings details"
               component={SettingsDetailsScreen}

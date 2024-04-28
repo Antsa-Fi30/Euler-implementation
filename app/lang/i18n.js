@@ -4,6 +4,7 @@ import en from "./en.json";
 import fr from "./fr.json";
 import mg from "./mg.json";
 
+//Ajouter ici le langage à ajouter dans l'application
 const resources = {
   en: en,
   fr: fr,

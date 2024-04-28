@@ -3,7 +3,9 @@ import { StyleSheet, View } from "react-native";
 import { RadioButton } from "react-native-paper";
 import i18next from "i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRoute } from "@react-navigation/native";
 
+//Function to save the configs
 const saveData = async (selectedLanguage) => {
   try {
     await AsyncStorage.setItem("LANGUAGE", selectedLanguage);
@@ -13,9 +15,13 @@ const saveData = async (selectedLanguage) => {
   }
 };
 
+//Components render
 const LangageList = ({ OptionList }) => {
   const option = OptionList;
   const [SelectedLang, setSelectedLang] = useState(i18next.language);
+  const route = useRoute();
+
+  console.log(route.params?.setting.label);
 
   useEffect(() => {
     i18next.changeLanguage(SelectedLang);

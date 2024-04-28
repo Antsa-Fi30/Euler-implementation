@@ -9,11 +9,13 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 //react-native paper
 import { Appbar } from "react-native-paper";
 import { useTheme } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 
 export default function AppTopBar({ toggleTheme }) {
   const [showBack, setShowBack] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
   const navigation = useNavigation();
+  const { t } = useTranslation();
   const route = useRoute();
   const theme = useTheme();
 
@@ -39,7 +41,10 @@ export default function AppTopBar({ toggleTheme }) {
       {showBack && <Appbar.BackAction onPress={() => navigation.goBack()} />}
       <Appbar.Content title={route.name} />
       {showSettings && (
-        <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
+        <Appbar.Action
+          icon="cog"
+          onPress={() => navigation.push(t("appbar.setting"))}
+        />
       )}
     </Appbar.Header>
   );

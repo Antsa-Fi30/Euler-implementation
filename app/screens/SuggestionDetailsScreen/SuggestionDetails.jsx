@@ -17,12 +17,6 @@ import SuggestPhoto from "../../components/SuggestDetails/SuggestPhoto";
 import { useTranslation } from "react-i18next";
 
 const SuggestionDetails = () => {
-  const placeholder = [
-    {
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quisquam inventore! Cumque tempore odio non pariatur commodi impedit ut harum nisi, asperiores placeat, illum unde, hic esse? Vel eius perspiciatis autem, voluptatum culpa ullam impedit fuga, dolorum, totam dolorem tempore. Necessitatibus cumque doloremque consequatur mollitia eum, est, facilis nihil, aliquam exercitationem iusto obcaecati consectetur placeat aut sit ratione perferendis. Culpa nemo asperiores consequuntur ipsum maiores! Est architecto ea dolores explicabo modi beatae iste officiis repellat fugit totam quo, accusamus, iure sed similique. Voluptates libero, ipsam sapiente esse nesciunt animi, laborum ad distinctio quam eveniet quae consectetur, ut aliquid minus enim!",
-    },
-  ];
   const param = useRoute().params;
   const theme = useTheme();
 

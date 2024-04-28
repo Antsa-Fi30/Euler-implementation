@@ -2,16 +2,18 @@ import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 import { useTheme, Text } from "react-native-paper";
 
 const SuggestionItem = ({ restaurant }) => {
   const navigation = useNavigation();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.push("Suggestion details", {
+        navigation.push(t("appbar.details"), {
           restaurant: restaurant,
         });
       }}
