@@ -1,0 +1,20 @@
+{
+  "translation": {
+    "placeholder": "Hikaroka...",
+    "menu1": "Carte",
+    "menu2": "Soso-kevitra",
+    "menu3": "Actualités",
+    "menu4": "Itinéraires",
+    "setting": {
+      "lang": "Fiteny",
+      "pref": "Safidy manokana",
+      "prefs": {
+        "theme": "Mode sombre"
+      }
+    },
+    "Apropos": "Mombamomba azy",
+    "photos": "Sary",
+    "read": "En savoir plus",
+    "close": "Fermer"
+  }
+}

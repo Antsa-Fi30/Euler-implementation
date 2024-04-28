@@ -6,30 +6,43 @@ import { StyleSheet } from "react-native";
 //React Navigation
 import { useNavigation, useRoute } from "@react-navigation/native";
 
+//react-native paper
 import { Appbar } from "react-native-paper";
-import Color from "../utils/Colors";
+import { useTheme } from "react-native-paper";
 
-export default function AppTopBar() {
+export default function AppTopBar({ toggleTheme }) {
   const [showBack, setShowBack] = useState(false);
-  //   const [showSettings, setShowSettings] = useState(false);
+  const [showSettings, setShowSettings] = useState(true);
   const navigation = useNavigation();
   const route = useRoute();
+  const theme = useTheme();
+
   useEffect(() => {
-    setShowBack(route.name === "Settings");
+    setShowBack(route.name != "Dish Detective");
+
+    //Limit settings pages
+    if (route.name === "Dish Detective") {
+      setShowSettings(true);
+    } else {
+      setShowSettings(false);
+    }
   }, [route]);
 
   return (
-    <Appbar.Header dark style={styles.appbar}>
+    <Appbar.Header
+      style={{
+        backgroundColor: theme.colors.background,
+        padding: 10,
+        paddingVertical: 14,
+      }}
+    >
       {showBack && <Appbar.BackAction onPress={() => navigation.goBack()} />}
       <Appbar.Content title={route.name} />
-      <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
-      <Appbar.Action icon="magnify" onPress={() => {}} />
+      {showSettings && (
+        <Appbar.Action icon="cog" onPress={() => navigation.push("Settings")} />
+      )}
     </Appbar.Header>
   );
 }
 
-const styles = StyleSheet.create({
-  appbar: {
-    backgroundColor: Color.dark.primary,
-  },
-});
+const styles = StyleSheet.create({});

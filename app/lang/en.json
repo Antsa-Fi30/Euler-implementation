@@ -1,0 +1,22 @@
+{
+  "translation": {
+    "placeholder": "To research...",
+    "menu1": "Map",
+    "menu2": "Suggestions",
+    "menu3": "News",
+    "menu4": "Itineraries",
+    "setting": {
+      "lang": "Languages",
+      "pref": "Preferences",
+      "prefs": {
+        "theme": "Dark mode"
+      }
+    },
+    "Apropos": "About",
+    "photos": "Pictures",
+    "read": "Read more",
+    "close": "Close",
+    "btn_save": "Save it for later",
+    "btn_find": "Find it"
+  }
+}

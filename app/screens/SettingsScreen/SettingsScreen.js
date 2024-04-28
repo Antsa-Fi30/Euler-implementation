@@ -1,20 +1,16 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  SafeAreaView,
-} from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { Button } from "react-native-paper";
+import { StyleSheet, View } from "react-native";
 import React from "react";
+import { Text, useTheme } from "react-native-paper";
+import Parameters from "../../components/SettingsScreen/Parameters";
+import { SettingsMenu } from "../../constants/SettingsMenu";
 
-const SettingsScreen = ({ navigation }) => {
+const SettingsScreen = () => {
+  const theme = useTheme();
   return (
-    <View style={styles.container}>
-      <Text>Settingss</Text>
-
-      <StatusBar style="auto" />
+    <View
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
+      <Parameters options={SettingsMenu} />
     </View>
   );
 };
@@ -23,12 +19,7 @@ export default SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  view: {
-    margin: 20,
+    height: "100%",
+    maxHeight: "100%",
   },
 });
