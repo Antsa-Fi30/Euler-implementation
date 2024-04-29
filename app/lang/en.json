@@ -6,6 +6,7 @@
     "menu3": "News",
     "menu4": "Itineraries",
     "setting": {
+      "appbar": "Settings",
       "lang": "Languages",
       "pref": "Preferences",
       "prefs": {
@@ -14,9 +15,9 @@
     },
     "Apropos": "About",
     "photos": "Pictures",
-    "read": "Read more",
+    "read": "Learn more",
     "close": "Close",
-    "btn_save": "Save it for later",
-    "btn_find": "Find it"
+    "btn_save": "Save for later",
+    "btn_find": "Find this"
   }
 }

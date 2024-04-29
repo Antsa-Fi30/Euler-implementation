@@ -1,5 +1,11 @@
 //React
-import { useCallback, useState, useMemo, useEffect } from "react";
+import {
+  useCallback,
+  useState,
+  useMemo,
+  useEffect,
+  useTransition,
+} from "react";
 
 //Components
 import AppTopBar from "./app/components/AppTopBar";
@@ -30,6 +36,7 @@ import i18next from "i18next";
 
 //Save configuration(s)
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 //Function creating Navigation:
 const Stack = createNativeStackNavigator();
@@ -50,6 +57,7 @@ const loadLang = async () => {
 
 //Components exported
 export default function App() {
+  const { t } = useTranslation();
   // Loading customized fonts
   const [fontsLoaded, fontError] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -105,11 +113,18 @@ export default function App() {
             <Stack.Screen name="Dish Detective" component={Routes} />
             <Stack.Screen
               name={"Suggestion details"}
+              options={({ route }) => ({
+                title: route.params.restaurant.name,
+              })}
               component={SuggestionDetails}
             />
-            <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen
+              name={t("setting.appbar")}
+              component={SettingsScreen}
+            />
             <Stack.Screen
               name="Settings details"
+              options={({ route }) => ({ title: route.params.setting.label })}
               component={SettingsDetailsScreen}
             />
           </Stack.Navigator>
