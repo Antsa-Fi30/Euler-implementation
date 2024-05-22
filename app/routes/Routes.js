@@ -13,13 +13,13 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { BottomNavigation, useTheme } from "react-native-paper";
 
 //Pages in Home 's screen
-
-//Traductor
-import { useTranslation } from "react-i18next";
 import Home from "../screens/HomeScreen/Home";
 import Lessons from "../screens/HomeScreen/Lessons";
 import Practice from "../screens/HomeScreen/Practice";
 import Visualization from "../screens/HomeScreen/Visualization";
+
+//Traductor
+import { useTranslation } from "react-i18next";
 
 const Tab = createBottomTabNavigator();
 
@@ -82,7 +82,7 @@ const Routes = () => {
           name="Home"
           component={Home}
           options={{
-            tabBarLabel: `${t("menu1")}`,
+            tabBarLabel: `${t("tab1")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="home" size={size} color={color} />;
             },
@@ -93,7 +93,7 @@ const Routes = () => {
           name="Lessons"
           component={Lessons}
           options={{
-            tabBarLabel: `${t("menu2")}`,
+            tabBarLabel: `${t("tab2")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="book-variant" size={size} color={color} />;
             },
@@ -104,7 +104,7 @@ const Routes = () => {
           name="Practices"
           component={Practice}
           options={{
-            tabBarLabel: `${t("menu2")}`,
+            tabBarLabel: `${t("tab3")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="book-education" size={size} color={color} />;
             },
@@ -115,7 +115,7 @@ const Routes = () => {
           name="Visualization"
           component={Visualization}
           options={{
-            tabBarLabel: `${t("menu2")}`,
+            tabBarLabel: `${t("tab4")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="eye" size={size} color={color} />;
             },

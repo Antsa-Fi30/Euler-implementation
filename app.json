@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DishDet",
-    "slug": "DishDet",
+    "name": "Euler Learning",
+    "slug": "EulerLearning",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,14 +20,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.DishDet"
+      "package": "com.devlock.EulerLearning"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-font",
-      "expo-localization"
-    ]
+
+    "plugins": ["expo-font"]
   }
 }

@@ -1,10 +1,10 @@
 {
   "translation": {
     "placeholder": "Rechercher...",
-    "menu1": "Carte",
-    "menu2": "Suggestions",
-    "menu3": "Actualités",
-    "menu4": "Itinéraires",
+    "tab1": "Acceuil",
+    "tab2": "Leçons",
+    "tab3": "Exercices",
+    "tab4": "Visualisations",
     "setting": {
       "appbar": "Paramètres",
       "lang": "Langages",
@@ -14,7 +14,6 @@
       }
     },
     "Apropos": "A propos",
-    "photos": "Photos",
     "read": "En savoir plus",
     "close": "Fermer",
     "btn_save": "Enregistrer pour plus tard",

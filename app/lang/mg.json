@@ -1,20 +1,22 @@
 {
   "translation": {
     "placeholder": "Hikaroka...",
-    "menu1": "Carte",
-    "menu2": "Soso-kevitra",
-    "menu3": "Actualités",
-    "menu4": "Itinéraires",
+    "tab1": "an-trano",
+    "tab2": "Lesona",
+    "tab3": "fanazaran-tena",
+    "tab4": "Visualizations",
     "setting": {
-      "lang": "Fiteny",
-      "pref": "Safidy manokana",
+      "appbar": "Fikirana",
+      "lang": "fiteny",
+      "pref": "safidinao",
       "prefs": {
-        "theme": "Mode sombre"
+        "theme": "Fomba maizina"
       }
     },
-    "Apropos": "Mombamomba azy",
-    "photos": "Sary",
-    "read": "En savoir plus",
-    "close": "Fermer"
+    "Apropos": "About",
+    "read": "Hamantatra bebe kokoa",
+    "close": "AKAIKY",
+    "btn_save": "Tehirizo ho any aoriana",
+    "btn_find": "Tadiavo ity"
   }
 }

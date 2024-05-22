@@ -1,22 +1,11 @@
 //React
-import {
-  useCallback,
-  useState,
-  useMemo,
-  useEffect,
-  useTransition,
-} from "react";
+import { useCallback, useState, useMemo, useEffect } from "react";
 
-//Components
-import AppTopBar from "./app/components/AppTopBar";
-import Routes from "./app/routes/Routes";
-import SettingsScreen from "./app/screens/SettingsScreen/SettingsScreen";
-import SuggestionDetails from "./app/screens/SuggestionDetailsScreen/SuggestionDetails";
-import SettingsDetailsScreen from "./app/screens/SettingsDetailsScreen/SettingsDetailsScreen";
+//The main App route
+import AppRoutes from "./app/routes/AppRoutes";
 
 //React navigation
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //React native paper and it's Theming
 import { Provider as PaperProvider } from "react-native-paper";
@@ -38,9 +27,6 @@ import i18next from "i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
 
-//Function creating Navigation:
-const Stack = createNativeStackNavigator();
-
 //Function loading languages
 const loadLang = async () => {
   try {
@@ -58,6 +44,7 @@ const loadLang = async () => {
 //Components exported
 export default function App() {
   const { t } = useTranslation();
+  
   // Loading customized fonts
   const [fontsLoaded, fontError] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -78,6 +65,7 @@ export default function App() {
         console.log("Error in : " + err);
       });
   }, [isThemeDark]);
+
   //Storing items
   const preferences = useMemo(
     () => ({
@@ -105,29 +93,7 @@ export default function App() {
     <ThemeContext.Provider value={preferences}>
       <PaperProvider theme={theme}>
         <NavigationContainer theme={theme}>
-          <Stack.Navigator
-            screenOptions={{
-              header: () => <AppTopBar />,
-            }}
-          >
-            <Stack.Screen name="Dish Detective" component={Routes} />
-            <Stack.Screen
-              name={"Suggestion details"}
-              options={({ route }) => ({
-                title: route.params.restaurant.name,
-              })}
-              component={SuggestionDetails}
-            />
-            <Stack.Screen
-              name={t("setting.appbar")}
-              component={SettingsScreen}
-            />
-            <Stack.Screen
-              name="Settings details"
-              options={({ route }) => ({ title: route.params.setting.label })}
-              component={SettingsDetailsScreen}
-            />
-          </Stack.Navigator>
+          <AppRoutes />
         </NavigationContainer>
       </PaperProvider>
     </ThemeContext.Provider>
