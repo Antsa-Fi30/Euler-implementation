@@ -32,10 +32,10 @@ export default function AppTopBar({ title }) {
     }
   };
   useEffect(() => {
-    setShowBack(route.name != "Dish Detective");
+    setShowBack(route.name != "Euler");
 
     //Limit settings pages
-    if (route.name === "Dish Detective") {
+    if (route.name === "Euler") {
       setShowSettings(true);
     } else {
       setShowSettings(false);

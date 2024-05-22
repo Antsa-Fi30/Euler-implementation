@@ -1,8 +1,6 @@
 import React from "react";
 //React Native components
-import {
-  StyleSheet,
-} from "react-native";
+import { StyleSheet } from "react-native";
 
 //React Navigation
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -15,11 +13,13 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { BottomNavigation, useTheme } from "react-native-paper";
 
 //Pages in Home 's screen
-import Map from "../screens/HomeScreen/Map";
-import Suggestion from "../screens/HomeScreen/Suggestion";
 
 //Traductor
 import { useTranslation } from "react-i18next";
+import Home from "../screens/HomeScreen/Home";
+import Lessons from "../screens/HomeScreen/Lessons";
+import Practice from "../screens/HomeScreen/Practice";
+import Visualization from "../screens/HomeScreen/Visualization";
 
 const Tab = createBottomTabNavigator();
 
@@ -79,29 +79,45 @@ const Routes = () => {
         )}
       >
         <Tab.Screen
-          name="Map"
-          component={Map}
+          name="Home"
+          component={Home}
           options={{
             tabBarLabel: `${t("menu1")}`,
             tabBarIcon: ({ color, size }) => {
-              return <Icon name="map" size={size} color={color} />;
+              return <Icon name="home" size={size} color={color} />;
             },
           }}
         />
 
         <Tab.Screen
-          name="Suggestion"
-          component={Suggestion}
+          name="Lessons"
+          component={Lessons}
           options={{
             tabBarLabel: `${t("menu2")}`,
             tabBarIcon: ({ color, size }) => {
-              return (
-                <Icon
-                  name="map-marker-multiple-outline"
-                  size={size}
-                  color={color}
-                />
-              );
+              return <Icon name="book-variant" size={size} color={color} />;
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="Practices"
+          component={Practice}
+          options={{
+            tabBarLabel: `${t("menu2")}`,
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="book-education" size={size} color={color} />;
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="Visualization"
+          component={Visualization}
+          options={{
+            tabBarLabel: `${t("menu2")}`,
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="eye" size={size} color={color} />;
             },
           }}
         />
