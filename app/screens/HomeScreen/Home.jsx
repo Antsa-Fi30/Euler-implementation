@@ -40,4 +40,14 @@ const Home = () => {
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    margin: 5,
+    padding: 5,
+  },
+  lessonsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 10,
+  },
+});
