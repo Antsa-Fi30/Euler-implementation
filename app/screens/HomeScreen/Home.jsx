@@ -2,8 +2,10 @@ import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import axios from "axios";
 import { Button, Text } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
   const [simulationData, setSimulationData] = useState(null);
 
   const simulateCooling = async () => {
@@ -21,17 +23,17 @@ const Home = () => {
     }
   };
 
+  console.log(simulationData);
+
   return (
     <View style={styles.container}>
       <Button mode="contained" onPress={simulateCooling}>
-        Simuler le refroidissement
+        {t("btn_refr")}
       </Button>
       {simulationData && (
         <View style={{ marginVertical: 15 }}>
-          <Text>Temps (s) : {simulationData.times.join(", ")}</Text>
-          <Text>
-            Températures (°C) : {simulationData.temperatures.join(", ")}
-          </Text>
+          <Text>Temps (s) : {simulationData.times[2]}</Text>
+          <Text>Températures (°C) : {simulationData.temperatures[2]}</Text>
         </View>
       )}
     </View>

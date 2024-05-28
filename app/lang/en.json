@@ -1,10 +1,7 @@
 {
   "translation": {
-    "placeholder": "To research...",
+    "btn_refr": "Simulate cooling",
     "tab1": "Home",
-    "tab2": "Lessons",
-    "tab3": "Exercises",
-    "tab4": "Visualizations",
     "setting": {
       "appbar": "Settings",
       "lang": "Languages",
@@ -12,11 +9,6 @@
       "prefs": {
         "theme": "Dark mode"
       }
-    },
-    "Apropos": "About",
-    "read": "Learn more",
-    "close": "Close",
-    "btn_save": "Save for later",
-    "btn_find": "Find this"
+    }
   }
 }

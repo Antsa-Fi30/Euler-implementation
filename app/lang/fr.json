@@ -1,10 +1,7 @@
 {
   "translation": {
-    "placeholder": "Rechercher...",
+    "btn_refr": "Simuler le refroidissement",
     "tab1": "Acceuil",
-    "tab2": "Leçons",
-    "tab3": "Exercices",
-    "tab4": "Visualisations",
     "setting": {
       "appbar": "Paramètres",
       "lang": "Langages",
@@ -12,11 +9,6 @@
       "prefs": {
         "theme": "Mode sombre"
       }
-    },
-    "Apropos": "A propos",
-    "read": "En savoir plus",
-    "close": "Fermer",
-    "btn_save": "Enregistrer pour plus tard",
-    "btn_find": "Trouvez ceci"
+    }
   }
 }
