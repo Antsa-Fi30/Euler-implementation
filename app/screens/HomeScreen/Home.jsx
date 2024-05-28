@@ -1,53 +1,47 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 import React from "react";
-import { BannerNotif } from "../../components/HomeScreen/BannerNotif";
-import LessonSuggest from "../../components/HomeScreen/LessonSuggest";
+import axios from "axios";
 
 const Home = () => {
-  const lessons = [
-    {
-      title: "Introduction aux Graphes",
-      description: "Apprenez les bases des graphes.",
-      screen: "Lesson1",
-    },
-    {
-      title: "Chemins Eulériens",
-      description: "Découvrez comment trouver des chemins eulériens.",
-      screen: "EulerianExercise",
-    },
-    {
-      title: "Circuits Eulériens",
-      description: "Étudiez les circuits eulériens.",
-      screen: "Lesson3",
-    },
-  ];
+  const [simulationData, setSimulationData] = useState(null);
+
+  const simulateCooling = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/simulate", {
+        T_initial: 100.0,
+        T_ambient: 25.0,
+        k: 0.1,
+        dt: 0.1,
+        time_period: 10.0,
+      });
+      setSimulationData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.lessonsContainer}>
-        {lessons.map((lesson, index) => (
-          <LessonSuggest
-            key={index}
-            title={lesson.title}
-            description={lesson.description}
-            onPress={() => navigation.navigate(lesson.screen)}
-          />
-        ))}
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <Button title="Simuler le refroidissement" onPress={simulateCooling} />
+      {simulationData && (
+        <View>
+          <Text>Temps (s) : {simulationData.times.join(", ")}</Text>
+          <Text>
+            Températures (°C) : {simulationData.temperatures.join(", ")}
+          </Text>
+        </View>
+      )}
+    </View>
   );
 };
 
-export default Home;
-
 const styles = StyleSheet.create({
   container: {
-    margin: 5,
-    padding: 5,
-  },
-  lessonsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
+
+export default Home;
