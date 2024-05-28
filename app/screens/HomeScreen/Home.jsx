@@ -1,6 +1,7 @@
-import { StyleSheet, View, ScrollView } from "react-native";
-import React from "react";
+import { StyleSheet, View } from "react-native";
+import { useState } from "react";
 import axios from "axios";
+import { Button, Text } from "react-native-paper";
 
 const Home = () => {
   const [simulationData, setSimulationData] = useState(null);
@@ -22,9 +23,11 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Button title="Simuler le refroidissement" onPress={simulateCooling} />
+      <Button mode="contained" onPress={simulateCooling}>
+        Simuler le refroidissement
+      </Button>
       {simulationData && (
-        <View>
+        <View style={{ marginVertical: 15 }}>
           <Text>Temps (s) : {simulationData.times.join(", ")}</Text>
           <Text>
             Températures (°C) : {simulationData.temperatures.join(", ")}
@@ -38,7 +41,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+
     alignItems: "center",
     justifyContent: "center",
   },
