@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator, StyleSheet, ScrollView, View } from "react-native";
 import { useState } from "react";
 import axios from "axios";
 import { Button, Text } from "react-native-paper";
@@ -11,8 +11,8 @@ const Home = () => {
 
   const simulateCooling = async () => {
     try {
-      const response = await axios.post("http://192.168.56.1:3000/simulate", {
-        //Lien sur expo go, "http://localhost:3000/.." si machine local(expo web browser)
+      const response = await axios.post("http://192.168.42.187:3000/simulate", {
+        //Lien sur expo go(apres npx expo start, l'addresse juste en bas du code QR), "http://localhost:3000/.." si machine local(expo web browser)
         T_initial: 100.0,
         T_ambient: 25.0,
         k: 0.1,
@@ -35,12 +35,14 @@ const Home = () => {
       <Button mode="contained" onPress={simulateCooling}>
         {t("btn_refr")}
       </Button>
-      {loading && <ActivityIndicator size={the} />}
+      {loading && <ActivityIndicator size="large" />}
       {simulationData && (
-        <View style={{ marginVertical: 15 }}>
-          <Text>Temps (s) : {simulationData.times[2]}</Text>
-          <Text>Températures (°C) : {simulationData.temperatures[2]}</Text>
-        </View>
+        <ScrollView style={{ marginVertical: 15 }}>
+          <Text>Temps (s) : {simulationData.times.join(", ")}</Text>
+          <Text>
+            Températures (°C) : {simulationData.temperatures.join(", ")}
+          </Text>
+        </ScrollView>
       )}
     </View>
   );
