@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Euler Learning",
-    "slug": "EulerLearning",
+    "name": "Cooling simulator",
+    "slug": "coolsimul",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.devlock.EulerLearning"
+      "package": "com.devlock.coolsimul"
     },
     "web": {
       "favicon": "./assets/favicon.png"

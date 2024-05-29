@@ -2,7 +2,7 @@
 import { useCallback, useState, useMemo, useEffect } from "react";
 
 //The main App route
-import AppRoutes from "./app/routes/AppRoutes";
+import Routes from "./app/routes/Routes";
 
 //React navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -44,7 +44,7 @@ const loadLang = async () => {
 //Components exported
 export default function App() {
   const { t } = useTranslation();
-  
+
   // Loading customized fonts
   const [fontsLoaded, fontError] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -93,7 +93,7 @@ export default function App() {
     <ThemeContext.Provider value={preferences}>
       <PaperProvider theme={theme}>
         <NavigationContainer theme={theme}>
-          <AppRoutes />
+          <Routes />
         </NavigationContainer>
       </PaperProvider>
     </ThemeContext.Provider>
