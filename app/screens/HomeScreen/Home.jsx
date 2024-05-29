@@ -12,6 +12,7 @@ const Home = () => {
   const simulateCooling = async () => {
     try {
       const response = await axios.post("http://192.168.56.1:3000/simulate", {
+        //Lien sur expo go, "http://localhost:3000/.." si machine local(expo web browser)
         T_initial: 100.0,
         T_ambient: 25.0,
         k: 0.1,
