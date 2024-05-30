@@ -10,6 +10,11 @@ import { useTranslation } from "react-i18next";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/HomeScreen/Home";
 
+//screens handler
+import { enableScreens } from "react-native-screens";
+
+enableScreens();
+
 //Function creating Navigation:
 const Stack = createNativeStackNavigator();
 

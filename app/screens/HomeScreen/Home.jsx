@@ -1,24 +1,28 @@
 import { ActivityIndicator, StyleSheet, Dimensions, View } from "react-native";
 import { useState } from "react";
 import axios from "axios";
-import { Button, Text } from "react-native-paper";
+import { Button, Text, TextInput } from "react-native-paper";
 import { useTranslation } from "react-i18next";
 import { LineChart } from "react-native-chart-kit";
 
 const Home = () => {
   const { t } = useTranslation();
+  const [T_initial, setT_initial] = useState("");
+  const [T_ambient, setT_ambient] = useState("");
+  const [k, setK] = useState("");
+  const [dt, setDt] = useState("");
+  const [time_period, setTime_period] = useState("");
   const [simulationData, setSimulationData] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const simulateCooling = async () => {
     try {
       const response = await axios.post("http://localhost:3000/simulate", {
         //Lien sur expo go(apres npx expo start, l'addresse juste en bas du code QR), "http://localhost:3000/.." si machine local(expo web browser)
-        T_initial: 100.0,
-        T_ambient: 25.0,
-        k: 0.1,
-        dt: 0.1,
-        time_period: 10.0,
+        T_initial: parseFloat(T_initial),
+        T_ambient: parseFloat(T_ambient),
+        k: parseFloat(k),
+        dt: parseFloat(dt),
+        time_period: parseFloat(time_period),
       });
       setSimulationData(response.data);
       setLoading(true);
@@ -33,6 +37,43 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          label={t("Initial Temperature")}
+          value={T_initial}
+          onChangeText={setT_initial}
+          keyboardType="numeric"
+          style={styles.input}
+        />
+        <TextInput
+          label={t("Ambient Temperature")}
+          value={T_ambient}
+          onChangeText={setT_ambient}
+          keyboardType="numeric"
+          style={styles.input}
+        />
+        <TextInput
+          label={t("Cooling Coefficient")}
+          value={k}
+          onChangeText={setK}
+          keyboardType="numeric"
+          style={styles.input}
+        />
+        <TextInput
+          label={t("Time Step (dt)")}
+          value={dt}
+          onChangeText={setDt}
+          keyboardType="numeric"
+          style={styles.input}
+        />
+        <TextInput
+          label={t("Time Period")}
+          value={time_period}
+          onChangeText={setTime_period}
+          keyboardType="numeric"
+          style={styles.input}
+        />
+      </View>
       <Button mode="contained" onPress={simulateCooling}>
         {t("btn_refr")}
       </Button>
@@ -92,6 +133,12 @@ const styles = StyleSheet.create({
   svgContainer: {
     paddingVertical: 20,
     marginTop: 15,
+  },
+  inputContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 10,
+    marginVertical: 10,
   },
 });
 
