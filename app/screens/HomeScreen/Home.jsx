@@ -1,26 +1,23 @@
-import {
-  ActivityIndicator,
-  StyleSheet,
-  Dimensions,
-  View,
-  ScrollView,
-} from "react-native";
+import { ActivityIndicator, StyleSheet, Dimensions, View } from "react-native";
 import { useState } from "react";
 import axios from "axios";
 import { Button, Text, TextInput } from "react-native-paper";
 import { useTranslation } from "react-i18next";
 import { LineChart } from "react-native-chart-kit";
+import AlertBar from "../../components/HomeScreen/AlertBar";
 
 const Home = () => {
   const { t } = useTranslation();
   const [T_initial, setT_initial] = useState("");
   const [T_ambient, setT_ambient] = useState("");
-  const [k, setK] = useState("");
+  const [k, setK] = useState(0.1);
   const [dt] = useState(5);
   const [time_period, setTime_period] = useState("");
   const [simulationData, setSimulationData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [err, setErr] = useState(false);
+  const [openSnack, setOpensnack] = useState(false);
 
   const validateInputs = () => {
     const newErrors = {};
@@ -33,6 +30,12 @@ const Home = () => {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handleClose = () => {
+    setTimeout(() => {
+      setOpensnack(false);
+    }, 100);
   };
 
   const simulateCooling = async () => {
@@ -49,23 +52,27 @@ const Home = () => {
         dt: parseFloat(dt),
         time_period: parseFloat(time_period),
       });
+      setK(0.1);
       setSimulationData(response.data);
+      setOpensnack(false);
     } catch (error) {
       console.error(error);
+      setErr(true);
+      setOpensnack(true);
     } finally {
       setLoading(false);
     }
   };
 
-  const handlingInputValid = (value, setter) => {
-    const validInput = value.replace(/[^0-9]/g, "");
+  const handlingInputValid = (value, setter, min = null, max = null) => {
+    let validInput = value.replace(/[^0-9.]/g, "");
+
+    if ((validInput, min !== null && max !== null)) {
+      const n = parseFloat(validInput);
+      if (n > max) validInput = max.toString();
+    }
     setter(validInput);
   };
-
-  // const handleCoefficient = (value, setter) => {
-  //   const limit = value.replace(/[^0-1]/g, "");
-  //   setter(limit);
-  // };
 
   return (
     <>
@@ -95,9 +102,9 @@ const Home = () => {
         )}
 
         <TextInput
-          label={t("Cooling Coefficient")}
+          label={t("Cooling Coefficient (must be between 0 and 1)")}
           value={k}
-          onChangeText={(value) => handlingInputValid(value, setK)}
+          onChangeText={(value) => handlingInputValid(value, setK, 0.1, 1)}
           keyboardType="numeric"
           style={styles.input}
           error={!!errors.k}
@@ -105,7 +112,7 @@ const Home = () => {
         {errors.k && <Text style={styles.errorText}>{errors.k}</Text>}
 
         <TextInput
-          label={t("Time Period")}
+          label={t("Time Period in minutes")}
           value={time_period}
           onChangeText={(value) => handlingInputValid(value, setTime_period)}
           keyboardType="numeric"
@@ -115,14 +122,23 @@ const Home = () => {
         {errors.time_period && (
           <Text style={styles.errorText}>{errors.time_period}</Text>
         )}
+
         <Button mode="contained-tonal" onPress={simulateCooling}>
           {t("btn_refr")}
         </Button>
       </View>
       <View style={styles.container}>
         {loading && <ActivityIndicator size="large" />}
+        {err && (
+          <AlertBar
+            open={openSnack}
+            close={handleClose}
+            errorMessage={"Something went wrong"}
+            retry={simulateCooling}
+          />
+        )}
         {simulationData && (
-          <View style={{ marginVertical: 20 }}>
+          <View style={{ marginVertical: 10 }}>
             <LineChart
               data={{
                 labels: simulationData.times.map((t) => t.toFixed(0)),
@@ -133,7 +149,7 @@ const Home = () => {
                 ],
               }}
               width={Dimensions.get("window").width - 30} // from react-native
-              height={220}
+              height={250}
               xAxisSuffix="mn"
               yAxisSuffix="°C"
               yAxisInterval={1} // optional, defaults to 1
