@@ -17,6 +17,7 @@ import Home from "../screens/HomeScreen/Home";
 
 //Traductor
 import { useTranslation } from "react-i18next";
+import Runge from "../screens/HomeScreen/Runge";
 
 const Tab = createBottomTabNavigator();
 
@@ -82,6 +83,16 @@ const BottomTabsRoutes = () => {
             tabBarLabel: `${t("tab1")}`,
             tabBarIcon: ({ color, size }) => {
               return <Icon name="home" size={size} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Runge simulator"
+          component={Runge}
+          options={{
+            tabBarLabel: `${t("tab2")}`,
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="edit" size={size} color={color} />;
             },
           }}
         />

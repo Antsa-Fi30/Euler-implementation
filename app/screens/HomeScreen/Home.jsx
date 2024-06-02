@@ -16,7 +16,7 @@ const Home = () => {
   const [T_initial, setT_initial] = useState("");
   const [T_ambient, setT_ambient] = useState("");
   const [k, setK] = useState("");
-  const [dt, setDt] = useState(5);
+  const [dt] = useState(5);
   const [time_period, setTime_period] = useState("");
   const [simulationData, setSimulationData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -57,13 +57,23 @@ const Home = () => {
     }
   };
 
+  const handlingInputValid = (value, setter) => {
+    const validInput = value.replace(/[^0-9]/g, "");
+    setter(validInput);
+  };
+
+  // const handleCoefficient = (value, setter) => {
+  //   const limit = value.replace(/[^0-1]/g, "");
+  //   setter(limit);
+  // };
+
   return (
     <>
       <View style={styles.inputContainer}>
         <TextInput
           label={t("Initial Temperature")}
           value={T_initial}
-          onChangeText={setT_initial}
+          onChangeText={(value) => handlingInputValid(value, setT_initial)}
           keyboardType="numeric"
           style={styles.input}
           error={!!errors.T_initial}
@@ -75,7 +85,7 @@ const Home = () => {
         <TextInput
           label={t("Ambient Temperature")}
           value={T_ambient}
-          onChangeText={setT_ambient}
+          onChangeText={(value) => handlingInputValid(value, setT_ambient)}
           keyboardType="numeric"
           style={styles.input}
           error={!!errors.T_ambient}
@@ -87,7 +97,7 @@ const Home = () => {
         <TextInput
           label={t("Cooling Coefficient")}
           value={k}
-          onChangeText={setK}
+          onChangeText={(value) => handlingInputValid(value, setK)}
           keyboardType="numeric"
           style={styles.input}
           error={!!errors.k}
@@ -97,7 +107,7 @@ const Home = () => {
         <TextInput
           label={t("Time Period")}
           value={time_period}
-          onChangeText={setTime_period}
+          onChangeText={(value) => handlingInputValid(value, setTime_period)}
           keyboardType="numeric"
           style={styles.input}
           error={!!errors.time_period}
@@ -105,7 +115,7 @@ const Home = () => {
         {errors.time_period && (
           <Text style={styles.errorText}>{errors.time_period}</Text>
         )}
-        <Button mode="contained" onPress={simulateCooling}>
+        <Button mode="contained-tonal" onPress={simulateCooling}>
           {t("btn_refr")}
         </Button>
       </View>
