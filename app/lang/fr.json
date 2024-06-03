@@ -1,11 +1,21 @@
 {
   "translation": {
+    "tab1": "Euler",
+    "tab2": "Runge Kutta",
+    "init_Temp": "Température initiale",
+    "init_pos": "Position initiale",
+    "ambient_Temp": "Température ambiante",
+    "init_v": "Vitesse initiale",
+    "cool_coeff": "Coefficient de refroidissement (doit être compris entre 0 et 1)",
+    "damp_co": "Coefficient d'amortissement (k)",
+    "time": "Période en minutes",
+    "time_step": "Pas de temps (dt)",
+    "n_step": "Nombre de pas de temps",
+    "btn_simul": "Exécuter une simulation",
     "btn_refr": "Simuler le refroidissement",
-    "tab1": "Acceuil",
-    "tab2": "Runge",
     "setting": {
       "appbar": "Paramètres",
-      "lang": "Langages",
+      "lang": "Langues",
       "pref": "Préférences",
       "prefs": {
         "theme": "Mode sombre"

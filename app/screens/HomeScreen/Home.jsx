@@ -59,7 +59,7 @@ const Home = () => {
     <ScrollView>
       <View style={styles.inputContainer}>
         <TextInput
-          label={t("Initial Temperature")}
+          label={t("init_Temp")}
           value={T_initial}
           onChangeText={(value) => handlingInputValid(value, setT_initial)}
           keyboardType="numeric"
@@ -71,7 +71,7 @@ const Home = () => {
         )}
 
         <TextInput
-          label={t("Ambient Temperature")}
+          label={t("ambient_Temp")}
           value={T_ambient}
           onChangeText={(value) => handlingInputValid(value, setT_ambient)}
           keyboardType="numeric"
@@ -83,7 +83,7 @@ const Home = () => {
         )}
 
         <TextInput
-          label={t("Cooling Coefficient (must be between 0 and 1)")}
+          label={t("cool_coeff")}
           value={k}
           onChangeText={(value) => handlingInputValid(value, setK, 0.1, 1)}
           keyboardType="numeric"
@@ -93,7 +93,7 @@ const Home = () => {
         {errors.k && <Text style={styles.errorText}>{errors.k}</Text>}
 
         <TextInput
-          label={t("Time Period in minutes")}
+          label={t("time")}
           value={time_period}
           onChangeText={(value) => handlingInputValid(value, setTime_period)}
           keyboardType="numeric"

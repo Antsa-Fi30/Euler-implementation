@@ -10,9 +10,6 @@ import { NavigationContainer } from "@react-navigation/native";
 //React native paper and it's Theming
 import { Provider as PaperProvider } from "react-native-paper";
 
-//Expo
-import { useFonts } from "expo-font";
-
 //Theme of the app
 import { lightTheme, darkTheme } from "./app/utils/Theme";
 
@@ -25,7 +22,6 @@ import i18next from "i18next";
 
 //Save configuration(s)
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useTranslation } from "react-i18next";
 
 //Function loading languages
 const loadLang = async () => {
@@ -43,15 +39,6 @@ const loadLang = async () => {
 
 //Components exported
 export default function App() {
-  const { t } = useTranslation();
-
-  // Loading customized fonts
-  const [fontsLoaded, fontError] = useFonts({
-    Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
-    "Poppins-medium": require("./assets/fonts/Poppins-Medium.ttf"),
-    "Poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
-  });
-
   //Using context theme
   const [isThemeDark, setIsThemeDark] = useState(false);
   let theme = isThemeDark ? darkTheme : lightTheme; //Mamadibadika an le theme

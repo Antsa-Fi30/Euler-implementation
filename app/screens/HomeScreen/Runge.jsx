@@ -3,18 +3,39 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { LineChart } from "react-native-chart-kit";
 import { rungeMethod } from "../../constants/Runge-Kutta";
+import { useTranslation } from "react-i18next";
 
-const VehicleSimulation = () => {
+const Runge = () => {
+  const { t } = useTranslation();
+
   const [x0, setX0] = useState("0");
   const [v0, setV0] = useState("50");
   const [k, setK] = useState("0.1");
   const [dt, setDt] = useState("0.1");
   const [timeSteps, setTimeSteps] = useState("100");
   const [simulationData, setSimulationData] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const a = (t, x, v) => -parseFloat(k) * v;
 
+  const validateInputs = () => {
+    const newErrors = {};
+
+    if (!x0) newErrors.x0 = t("This field is required");
+    if (!v0) newErrors.v0 = t("This field is required");
+    if (!k) newErrors.k = t("This field is required");
+    if (!dt) newErrors.dt = t("This field is required");
+    if (!timeSteps) newErrors.timeSteps = t("This field is required");
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const simulate = () => {
+    if (!validateInputs()) {
+      return;
+    }
+
     const data = rungeMethod(
       parseFloat(x0),
       parseFloat(v0),
@@ -25,45 +46,67 @@ const VehicleSimulation = () => {
     setSimulationData(data);
   };
 
+  const handlingInputValid = (value, setter, min = null, max = null) => {
+    let validInput = value.replace(/[^0-9.]/g, "");
+
+    if ((validInput, min !== null && max !== null)) {
+      const n = parseFloat(validInput);
+      if (n > max) validInput = max.toString();
+    }
+    setter(validInput);
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
-        label="Initial Position"
+        label={t("init_pos")}
         value={x0}
-        onChangeText={setX0}
+        onChangeText={(value) => handlingInputValid(value, setX0)}
         keyboardType="numeric"
         style={styles.input}
+        error={!!errors.x0}
       />
+      {errors.timeSteps && <Text style={styles.x0}>{errors.x0}</Text>}
       <TextInput
-        label="Initial Velocity"
+        label={t("init_v")}
         value={v0}
-        onChangeText={setV0}
+        onChangeText={(value) => handlingInputValid(value, setV0)}
         keyboardType="numeric"
         style={styles.input}
+        error={!!errors.v0}
       />
+      {errors.timeSteps && <Text style={styles.v0}>{errors.v0}</Text>}
       <TextInput
-        label="Damping Coefficient (k)"
+        label={t("damp_co")}
         value={k}
-        onChangeText={setK}
+        onChangeText={(value) => handlingInputValid(value, setK)}
         keyboardType="numeric"
         style={styles.input}
+        error={!!errors.k}
       />
+      {errors.timeSteps && <Text style={styles.k}>{errors.k}</Text>}
       <TextInput
-        label="Time Step (dt)"
+        label={t("time_step")}
         value={dt}
-        onChangeText={setDt}
+        onChangeText={(value) => handlingInputValid(value, setDt)}
         keyboardType="numeric"
         style={styles.input}
+        error={!!errors.dt}
       />
+      {errors.timeSteps && <Text style={styles.dt}>{errors.dt}</Text>}
       <TextInput
-        label="Number of Time Steps"
+        label={t("n_step")}
         value={timeSteps}
-        onChangeText={setTimeSteps}
+        onChangeText={(value) => handlingInputValid(value, setTimeSteps)}
         keyboardType="numeric"
         style={styles.input}
+        error={!!errors.timeSteps}
       />
+      {errors.timeSteps && (
+        <Text style={styles.errorText}>{errors.timeSteps}</Text>
+      )}
       <Button mode="contained" onPress={simulate} style={styles.button}>
-        Run Simulation
+        {t("btn_simul")}
       </Button>
 
       {simulationData && (
@@ -125,4 +168,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VehicleSimulation;
+export default Runge;
