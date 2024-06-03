@@ -7,6 +7,7 @@ const AlertBar = ({ close, open, errorMessage, retry }) => {
       <Snackbar
         visible={open}
         onDismiss={close}
+        duration={3000}
         action={{
           label: "Retry",
           onPress: retry,

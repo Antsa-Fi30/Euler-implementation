@@ -1,23 +1,20 @@
-import { ActivityIndicator, StyleSheet, Dimensions, View } from "react-native";
+import { StyleSheet, Dimensions, View, ScrollView } from "react-native";
 import { useState } from "react";
-import axios from "axios";
 import { Button, Text, TextInput } from "react-native-paper";
 import { useTranslation } from "react-i18next";
 import { LineChart } from "react-native-chart-kit";
-import AlertBar from "../../components/HomeScreen/AlertBar";
+import { eulerMethod } from "../../constants/Euler";
 
 const Home = () => {
   const { t } = useTranslation();
+  //Etats du composants
   const [T_initial, setT_initial] = useState("");
   const [T_ambient, setT_ambient] = useState("");
   const [k, setK] = useState(0.1);
   const [dt] = useState(5);
   const [time_period, setTime_period] = useState("");
   const [simulationData, setSimulationData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const [err, setErr] = useState(false);
-  const [openSnack, setOpensnack] = useState(false);
 
   const validateInputs = () => {
     const newErrors = {};
@@ -32,36 +29,20 @@ const Home = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleClose = () => {
-    setTimeout(() => {
-      setOpensnack(false);
-    }, 100);
-  };
-
   const simulateCooling = async () => {
     if (!validateInputs()) {
       return;
     }
 
-    try {
-      setLoading(true);
-      const response = await axios.post("http://localhost:3000/simulate", {
-        T_initial: parseFloat(T_initial),
-        T_ambient: parseFloat(T_ambient),
-        k: parseFloat(k),
-        dt: parseFloat(dt),
-        time_period: parseFloat(time_period),
-      });
-      setK(0.1);
-      setSimulationData(response.data);
-      setOpensnack(false);
-    } catch (error) {
-      console.error(error);
-      setErr(true);
-      setOpensnack(true);
-    } finally {
-      setLoading(false);
-    }
+    const { t_values, T_values } = eulerMethod(
+      parseFloat(T_initial),
+      parseFloat(T_ambient),
+      parseFloat(k),
+      parseFloat(dt),
+      parseFloat(time_period)
+    );
+
+    setSimulationData({ times: t_values, temperatures: T_values });
   };
 
   const handlingInputValid = (value, setter, min = null, max = null) => {
@@ -75,7 +56,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <ScrollView>
       <View style={styles.inputContainer}>
         <TextInput
           label={t("Initial Temperature")}
@@ -128,15 +109,6 @@ const Home = () => {
         </Button>
       </View>
       <View style={styles.container}>
-        {loading && <ActivityIndicator size="large" />}
-        {err && (
-          <AlertBar
-            open={openSnack}
-            close={handleClose}
-            errorMessage={"Something went wrong"}
-            retry={simulateCooling}
-          />
-        )}
         {simulationData && (
           <View style={{ marginVertical: 10 }}>
             <LineChart
@@ -179,7 +151,7 @@ const Home = () => {
           </View>
         )}
       </View>
-    </>
+    </ScrollView>
   );
 };
 

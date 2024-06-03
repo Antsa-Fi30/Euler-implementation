@@ -92,7 +92,7 @@ const BottomTabsRoutes = () => {
           options={{
             tabBarLabel: `${t("tab2")}`,
             tabBarIcon: ({ color, size }) => {
-              return <Icon name="edit" size={size} color={color} />;
+              return <Icon name="home" size={size} color={color} />;
             },
           }}
         />

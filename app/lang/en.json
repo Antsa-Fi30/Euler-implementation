@@ -3,6 +3,11 @@
     "btn_refr": "Simulate cooling",
     "tab1": "Home",
     "tab2": "Runge",
+    "init_Temp": "Initial temperature",
+    "ambient_Temp": "Ambient temperature",
+    "cool_coeff": "Cooling Coefficient (must be between 0 and 1)",
+    "time": "Time Period in minutes",
+    "btn_simul": "",
     "setting": {
       "appbar": "Settings",
       "lang": "Languages",
