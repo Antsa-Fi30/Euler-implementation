@@ -2,6 +2,7 @@
   "translation": {
     "tab1": "Euler",
     "tab2": "Runge-Kutta",
+    "tab3": "About",
     "init_Temp": "Initial temperature",
     "init_pos": "Initial Position",
     "ambient_Temp": "Ambient temperature",

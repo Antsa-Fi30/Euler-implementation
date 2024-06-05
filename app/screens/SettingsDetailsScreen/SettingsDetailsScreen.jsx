@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text, RadioButton, useTheme } from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import React from "react";
 //React-navigation's element(s)
 import { useRoute } from "@react-navigation/native";

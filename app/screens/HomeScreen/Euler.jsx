@@ -1,13 +1,26 @@
-import { StyleSheet, Dimensions, View, ScrollView } from "react-native";
+//React
 import { useState } from "react";
+
+//React-native
+import { StyleSheet, Dimensions, View, ScrollView } from "react-native";
+
+//React native paper
 import { Button, Text, TextInput } from "react-native-paper";
+
+//Traduction
 import { useTranslation } from "react-i18next";
+
+//Composant pour courbe
 import { LineChart } from "react-native-chart-kit";
+
+//Algorithme
 import { eulerMethod } from "../../constants/Euler";
 
-const Home = () => {
+//Page:
+const Euler = () => {
   const { t } = useTranslation();
-  //Etats du composants
+
+  //Etats du composants:
   const [T_initial, setT_initial] = useState("");
   const [T_ambient, setT_ambient] = useState("");
   const [k, setK] = useState(0.1);
@@ -16,6 +29,7 @@ const Home = () => {
   const [simulationData, setSimulationData] = useState(null);
   const [errors, setErrors] = useState({});
 
+  //Functions:
   const validateInputs = () => {
     const newErrors = {};
 
@@ -179,4 +193,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Euler;

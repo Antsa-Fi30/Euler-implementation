@@ -12,12 +12,13 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 //UI Library : react-native paper
 import { BottomNavigation, useTheme } from "react-native-paper";
 
-//Pages in Home 's screen
-import Home from "../screens/HomeScreen/Home";
+//Pages in Euler 's screen
+import Runge from "../screens/HomeScreen/Runge";
+import Algos from "../screens/HomeScreen/Algos";
+import Euler from "../screens/HomeScreen/Euler";
 
 //Traductor
 import { useTranslation } from "react-i18next";
-import Runge from "../screens/HomeScreen/Runge";
 
 const Tab = createBottomTabNavigator();
 
@@ -78,11 +79,13 @@ const BottomTabsRoutes = () => {
       >
         <Tab.Screen
           name="Cooling simulator"
-          component={Home}
+          component={Euler}
           options={{
             tabBarLabel: `${t("tab1")}`,
             tabBarIcon: ({ color, size }) => {
-              return <Icon name="home" size={size} color={color} />;
+              return (
+                <Icon name="coolant-temperature" size={size} color={color} />
+              );
             },
           }}
         />
@@ -92,7 +95,19 @@ const BottomTabsRoutes = () => {
           options={{
             tabBarLabel: `${t("tab2")}`,
             tabBarIcon: ({ color, size }) => {
-              return <Icon name="home" size={size} color={color} />;
+              return <Icon name="truck-fast" size={size} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Algorithmes"
+          component={Algos}
+          options={{
+            tabBarLabel: `${t("tab3")}`,
+            tabBarIcon: ({ color, size }) => {
+              return (
+                <Icon name="book-open-variant" size={size} color={color} />
+              );
             },
           }}
         />

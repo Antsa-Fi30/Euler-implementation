@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 
 //React navigation
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/HomeScreen/Home";
 
 //screens handler
 import { enableScreens } from "react-native-screens";
@@ -28,7 +27,7 @@ const Routes = () => {
         header: () => <AppTopBar />,
       }}
     >
-      <Stack.Screen name="Euler" component={BottomTabsRoutes} />
+      <Stack.Screen name="I.S" component={BottomTabsRoutes} />
       <Stack.Screen name={t("setting.appbar")} component={SettingsScreen} />
       <Stack.Screen name="Settings details" component={SettingsDetailsScreen} />
     </Stack.Navigator>

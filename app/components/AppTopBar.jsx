@@ -11,7 +11,7 @@ import { Appbar } from "react-native-paper";
 import { useTheme } from "react-native-paper";
 import { useTranslation } from "react-i18next";
 
-export default function AppTopBar({ title }) {
+export default function AppTopBar({}) {
   const [showBack, setShowBack] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
   const navigation = useNavigation();
@@ -32,10 +32,10 @@ export default function AppTopBar({ title }) {
     }
   };
   useEffect(() => {
-    setShowBack(route.name != "Euler");
+    setShowBack(route.name != "I.S");
 
     //Limit settings pages
-    if (route.name === "Euler") {
+    if (route.name === "I.S") {
       setShowSettings(true);
     } else {
       setShowSettings(false);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
-import { Button, TextInput } from "react-native-paper";
+import { StyleSheet, Dimensions, ScrollView } from "react-native";
+import { Button, Text, TextInput } from "react-native-paper";
 import { LineChart } from "react-native-chart-kit";
 import { rungeMethod } from "../../constants/Runge-Kutta";
 import { useTranslation } from "react-i18next";
@@ -8,11 +8,11 @@ import { useTranslation } from "react-i18next";
 const Runge = () => {
   const { t } = useTranslation();
 
-  const [x0, setX0] = useState("0");
-  const [v0, setV0] = useState("50");
+  const [x0, setX0] = useState("");
+  const [v0, setV0] = useState("");
   const [k, setK] = useState("0.1");
   const [dt, setDt] = useState("0.1");
-  const [timeSteps, setTimeSteps] = useState("100");
+  const [timeSteps, setTimeSteps] = useState("");
   const [simulationData, setSimulationData] = useState(null);
   const [errors, setErrors] = useState({});
 
@@ -57,7 +57,7 @@ const Runge = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <TextInput
         label={t("init_pos")}
         value={x0}
@@ -147,7 +147,7 @@ const Runge = () => {
           style={styles.chart}
         />
       )}
-    </View>
+    </ScrollView>
   );
 };
 

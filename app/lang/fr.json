@@ -2,6 +2,7 @@
   "translation": {
     "tab1": "Euler",
     "tab2": "Runge Kutta",
+    "tab3": "A propos",
     "init_Temp": "Température initiale",
     "init_pos": "Position initiale",
     "ambient_Temp": "Température ambiante",
@@ -20,6 +21,11 @@
       "prefs": {
         "theme": "Mode sombre"
       }
-    }
+    },
+    "title_euler": "Algorithme d'Euler",
+    "subtitle_euler": "Utilisée pour afficher le courbe dans le simulateur de température",
+    "descri_euler": "L'algorithme d'Euler est une méthode simple et directe pour résoudre les équations différentielles ordinaires (EDO). Il est basé sur l'approximation de la solution en utilisant une série de tangentes successives. L'aglorithme se presente ci-dessous:",
+    "title_kutta": "Algorithme de Runge Kutta",
+    "subtitle_kutta": "Utilisée pour afficher le courbe dans le simulateur de mouvement"
   }
 }
