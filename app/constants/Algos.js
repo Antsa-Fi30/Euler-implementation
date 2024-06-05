@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import eulerImage from "../../assets/euler.png";
-import kuttaImage from "../../assets/kuta.png";
+import kuttaImage from "../../assets/kutta.png";
 
 export const algos = () => {
   const { t } = useTranslation();

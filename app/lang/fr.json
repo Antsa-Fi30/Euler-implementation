@@ -26,6 +26,7 @@
     "subtitle_euler": "Utilisée pour afficher le courbe dans le simulateur de température",
     "descri_euler": "L'algorithme d'Euler est une méthode simple et directe pour résoudre les équations différentielles ordinaires (EDO). Il est basé sur l'approximation de la solution en utilisant une série de tangentes successives. L'aglorithme se presente ci-dessous:",
     "title_kutta": "Algorithme de Runge Kutta",
-    "subtitle_kutta": "Utilisée pour afficher le courbe dans le simulateur de mouvement"
+    "subtitle_kutta": "Utilisée pour afficher le courbe dans le simulateur de mouvement",
+    "descri_kutta": "L'algorithme de Runge-Kutta est une méthode plus avancée pour résoudre les EDO, offrant une meilleure précision que l'algorithme d'Euler. La méthode de Runge-Kutta d'ordre 4 (RK4) est la plus couramment utilisée et son algorithme se déroule comme ceci :"
   }
 }

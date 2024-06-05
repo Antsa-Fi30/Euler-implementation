@@ -17,7 +17,7 @@ const AlgosCard = ({ Title, Subtitle, description, uri }) => {
             }}
           >
             <Text style={styles.text}>{description}</Text>
-            <Image source={uri} style={styles.image} />
+            <Image source={uri} style={styles.image} resizeMode="contain" />
           </View>
         </View>
       </Card.Content>
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
+    width: "100%",
+    height: undefined,
+    aspectRatio: 1,
     borderRadius: 5,
   },
   section: {
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
   subHeading: {
     fontSize: 18,
     fontFamily: "Poppins",
-    fontWeight: "semi-bold",
+    fontWeight: "600",
     marginBottom: 10,
   },
   text: {

@@ -1,18 +1,18 @@
 {
   "translation": {
     "tab1": "Euler",
-    "tab2": "Runge-Kutta",
+    "tab2": "Runge Kutta",
     "tab3": "About",
     "init_Temp": "Initial temperature",
-    "init_pos": "Initial Position",
+    "init_pos": "Initial position",
     "ambient_Temp": "Ambient temperature",
-    "init_v": "Initial Velocity",
-    "cool_coeff": "Cooling Coefficient (must be between 0 and 1)",
-    "damp_co": "Damping Coefficient (k)",
-    "time": "Time Period in minutes",
-    "time_step": "Time Step (dt)",
-    "n_step": "Number of Time Steps",
-    "btn_simul": "Run Simulation",
+    "init_v": "Initial speed",
+    "cool_coeff": "Cooling coefficient (must be between 0 and 1)",
+    "damp_co": "Damping coefficient (k)",
+    "time": "Period in minutes",
+    "time_step": "Time steps (dt)",
+    "n_step": "Number of time steps",
+    "btn_simul": "Run a simulation",
     "btn_refr": "Simulate cooling",
     "setting": {
       "appbar": "Settings",
@@ -21,6 +21,12 @@
       "prefs": {
         "theme": "Dark mode"
       }
-    }
+    },
+    "title_euler": "Euler's algorithm",
+    "subtitle_euler": "Used to display the curve in the temperature simulator",
+    "descri_euler": "Euler's algorithm is a simple and straightforward method for solving ordinary differential equations (ODE). ",
+    "title_kutta": "Runge Kutta algorithm",
+    "subtitle_kutta": "Used to display the curve in the motion simulator",
+    "descri_kutta": "The Runge-Kutta algorithm is a more advanced method for solving ODEs, providing better accuracy than the Euler algorithm. "
   }
 }
