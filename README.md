@@ -1,2 +1,2 @@
 ## EULER learning application
-APK dans Euler's app.rar
+Le fichier .apk se trouve dans Euler's app.rar
