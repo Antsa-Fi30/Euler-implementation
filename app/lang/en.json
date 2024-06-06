@@ -24,9 +24,9 @@
     },
     "title_euler": "Euler's algorithm",
     "subtitle_euler": "Used to display the curve in the temperature simulator",
-    "descri_euler": "Euler's algorithm is a simple and straightforward method for solving ordinary differential equations (ODE). ",
+    "descri_euler": "Euler's algorithm is a simple and straightforward method for solving ordinary differential equations (ODE). There it is:",
     "title_kutta": "Runge Kutta algorithm",
     "subtitle_kutta": "Used to display the curve in the motion simulator",
-    "descri_kutta": "The Runge-Kutta algorithm is a more advanced method for solving ODEs, providing better accuracy than the Euler algorithm. "
+    "descri_kutta": "The Runge-Kutta algorithm is a more advanced method for solving ODEs, providing better accuracy than the Euler algorithm. There it is:"
   }
 }

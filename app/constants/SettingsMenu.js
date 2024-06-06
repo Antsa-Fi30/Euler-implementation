@@ -12,10 +12,6 @@ export const SettingsMenu = [
         label: "English",
         value: "en",
       },
-      {
-        label: "Malagasy",
-        value: "mg",
-      },
     ],
   },
   {
